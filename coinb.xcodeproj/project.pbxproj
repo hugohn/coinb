@@ -99,6 +99,7 @@
 				TargetAttributes = {
 					0B73D8031E74A74D00EE46AE = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 866334M537;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -264,7 +265,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 866334M537;
 				INFOPLIST_FILE = coinb/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.foodcompass.coinb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -276,7 +279,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 866334M537;
 				INFOPLIST_FILE = coinb/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.foodcompass.coinb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -303,6 +308,7 @@
 				0B73D81B1E74A74D00EE46AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
