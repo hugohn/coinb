@@ -14,6 +14,7 @@ let COINBASE_CLIENT_ID = "0f303e77ab3f6b254c43f583473fd5936fe0a52c6a557909913aab
 let COINBASE_CLIENT_SECRET = "83ee2ee68a866639c2f06cdc8e02f34167757c3e24927ba2f00e90233bbede8a"
 let COINBASE_SCHEME = "com.hugohn.coinb.coinbase-oauth"
 let COINBASE_REDIRECT_URI = "com.hugohn.coinb.coinbase-oauth://coinbase-oauth"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -23,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        CoinbaseClient.sharedInstance.getSpotPrice(withCurrency: "USD")
         //CoinbaseOAuth.startAuthentication(withClientId: COINBASE_CLIENT_ID, scope: "", redirectUri: COINBASE_REDIRECT_URI, meta: nil)
         
         return true

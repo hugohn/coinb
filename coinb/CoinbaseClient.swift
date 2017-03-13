@@ -21,15 +21,17 @@ class CoinbaseClient {
         debugPrint("initialized Coinbase with token \(accessToken)")
     }
     
-    func getSpotPrice(withCurrency: String!) {
+    func getSpotPrice(withCurrency: String!, completion: ((String?) -> ())!) {
         client.getSpotRate(withCurrency: withCurrency) { (balance: CoinbaseBalance?, error: Error?) in
             guard error == nil else {
                 debugPrint("error = \(error.debugDescription)")
+                completion(nil)
                 return
             }
             
             if let balance = balance {
                 debugPrint("1 BTC = \(balance.amount!) \(balance.currency!)")
+                completion("\(balance.amount!) \(balance.currency!)")
             }
         }
     }

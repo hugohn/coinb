@@ -9,15 +9,18 @@ PODS:
   - coinbase-official/core (3.3.0)
   - coinbase-official/OAuth (3.3.0):
     - coinbase-official/core
+  - MBProgressHUD (1.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - coinbase-official
+  - MBProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   coinbase-official: 57de4952bdb85e16a8f99930c57e16505ff571ed
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
 
-PODFILE CHECKSUM: 91eccdebe53a87e8ec338010d8007babac328f84
+PODFILE CHECKSUM: 3bbbbdfc8ef3900e5acb076798711c5d5405b637
 
 COCOAPODS: 1.2.0

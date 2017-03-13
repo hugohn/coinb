@@ -5,4 +5,5 @@ use_frameworks!
 target 'coinb' do
     pod 'Alamofire'
     pod 'coinbase-official'
+    pod 'MBProgressHUD'
 end

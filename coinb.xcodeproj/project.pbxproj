@@ -8,25 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		0B73D8081E74A74D00EE46AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73D8071E74A74D00EE46AE /* AppDelegate.swift */; };
-		0B73D80A1E74A74D00EE46AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73D8091E74A74D00EE46AE /* ViewController.swift */; };
-		0B73D80D1E74A74D00EE46AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B73D80B1E74A74D00EE46AE /* Main.storyboard */; };
 		0B73D8101E74A74D00EE46AE /* coinb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B73D80E1E74A74D00EE46AE /* coinb.xcdatamodeld */; };
 		0B73D8121E74A74D00EE46AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B73D8111E74A74D00EE46AE /* Assets.xcassets */; };
 		0B73D8151E74A74D00EE46AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B73D8131E74A74D00EE46AE /* LaunchScreen.storyboard */; };
 		0B73D8201E76515500EE46AE /* CoinbaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73D81F1E76515500EE46AE /* CoinbaseClient.swift */; };
+		0B73D8231E768A8500EE46AE /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B73D8221E768A8500EE46AE /* HomeViewController.storyboard */; };
+		0B73D8251E768AB200EE46AE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73D8241E768AB200EE46AE /* HomeViewController.swift */; };
 		FB860E2201370A848CA79657 /* Pods_coinb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BE096859406127E188F5A1 /* Pods_coinb.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0B73D8041E74A74D00EE46AE /* coinb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = coinb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B73D8071E74A74D00EE46AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0B73D8091E74A74D00EE46AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0B73D80C1E74A74D00EE46AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B73D80F1E74A74D00EE46AE /* coinb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coinb.xcdatamodel; sourceTree = "<group>"; };
 		0B73D8111E74A74D00EE46AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B73D8141E74A74D00EE46AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B73D8161E74A74D00EE46AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B73D81F1E76515500EE46AE /* CoinbaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinbaseClient.swift; sourceTree = "<group>"; };
+		0B73D8221E768A8500EE46AE /* HomeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
+		0B73D8241E768AB200EE46AE /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		68CF20D81C22FB2844818060 /* Pods-coinb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coinb.release.xcconfig"; path = "Pods/Target Support Files/Pods-coinb/Pods-coinb.release.xcconfig"; sourceTree = "<group>"; };
 		B90D4B656BB7B7E006F69A01 /* Pods-coinb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coinb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-coinb/Pods-coinb.debug.xcconfig"; sourceTree = "<group>"; };
 		C7BE096859406127E188F5A1 /* Pods_coinb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coinb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,10 +65,9 @@
 		0B73D8061E74A74D00EE46AE /* coinb */ = {
 			isa = PBXGroup;
 			children = (
+				0B73D8211E768A5F00EE46AE /* Home */,
 				0B73D81C1E76511600EE46AE /* API */,
 				0B73D8071E74A74D00EE46AE /* AppDelegate.swift */,
-				0B73D8091E74A74D00EE46AE /* ViewController.swift */,
-				0B73D80B1E74A74D00EE46AE /* Main.storyboard */,
 				0B73D8111E74A74D00EE46AE /* Assets.xcassets */,
 				0B73D8131E74A74D00EE46AE /* LaunchScreen.storyboard */,
 				0B73D8161E74A74D00EE46AE /* Info.plist */,
@@ -83,6 +82,15 @@
 				0B73D81F1E76515500EE46AE /* CoinbaseClient.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		0B73D8211E768A5F00EE46AE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0B73D8221E768A8500EE46AE /* HomeViewController.storyboard */,
+				0B73D8241E768AB200EE46AE /* HomeViewController.swift */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 		8B6365FB283DAF78EEC78D64 /* Frameworks */ = {
@@ -165,9 +173,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B73D8231E768A8500EE46AE /* HomeViewController.storyboard in Resources */,
 				0B73D8151E74A74D00EE46AE /* LaunchScreen.storyboard in Resources */,
 				0B73D8121E74A74D00EE46AE /* Assets.xcassets in Resources */,
-				0B73D80D1E74A74D00EE46AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,8 +234,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B73D8251E768AB200EE46AE /* HomeViewController.swift in Sources */,
 				0B73D8101E74A74D00EE46AE /* coinb.xcdatamodeld in Sources */,
-				0B73D80A1E74A74D00EE46AE /* ViewController.swift in Sources */,
 				0B73D8201E76515500EE46AE /* CoinbaseClient.swift in Sources */,
 				0B73D8081E74A74D00EE46AE /* AppDelegate.swift in Sources */,
 			);
@@ -236,14 +244,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0B73D80B1E74A74D00EE46AE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0B73D80C1E74A74D00EE46AE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0B73D8131E74A74D00EE46AE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -357,7 +357,7 @@
 				INFOPLIST_FILE = coinb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.coinb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hugohn.coinb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -372,7 +372,7 @@
 				INFOPLIST_FILE = coinb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.coinb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hugohn.coinb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
