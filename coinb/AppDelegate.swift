@@ -8,7 +8,12 @@
 
 import UIKit
 import CoreData
+import coinbase_official
 
+let COINBASE_CLIENT_ID = "0f303e77ab3f6b254c43f583473fd5936fe0a52c6a557909913aabead9184810"
+let COINBASE_CLIENT_SECRET = "83ee2ee68a866639c2f06cdc8e02f34167757c3e24927ba2f00e90233bbede8a"
+let COINBASE_SCHEME = "com.hugohn.coinb.coinbase-oauth"
+let COINBASE_REDIRECT_URI = "com.hugohn.coinb.coinbase-oauth://coinbase-oauth"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        CoinbaseClient.sharedInstance.getSpotPrice(withCurrency: "USD")
+        //CoinbaseOAuth.startAuthentication(withClientId: COINBASE_CLIENT_ID, scope: "", redirectUri: COINBASE_REDIRECT_URI, meta: nil)
+        
         return true
     }
 
@@ -42,6 +51,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if url.scheme == COINBASE_SCHEME {
+            CoinbaseOAuth.finishAuthentication(for: url, clientId: COINBASE_CLIENT_ID, clientSecret: COINBASE_CLIENT_SECRET, completion: { (result: Any?, error: Error?) in
+                if error != nil {
+                    // Could not authenticate.
+                } else {
+                    // Tokens successfully obtained!
+                    // Do something with them (store them, etc.)
+                    if let result = result as? [String : AnyObject] {
+                        if let accessToken = result["access_token"] as? String {
+                            CoinbaseClient.sharedInstance.setupWithAccessToken(oAuthAccessToken: accessToken)
+                        }
+                    }
+                    // Note that you should also store 'expire_in' and refresh the token using CoinbaseOAuth.getOAuthTokensForRefreshToken() when it expires
+                }
+            })
+            return true
+        }
+        else {
+            return false
+        }
     }
 
     // MARK: - Core Data stack
