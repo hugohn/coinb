@@ -4,5 +4,5 @@ use_frameworks!
 
 target 'coinb' do
     pod 'Alamofire'
-    pod 'MagicalRecord'
+    pod 'coinbase-official'
 end
