@@ -8,15 +8,16 @@
 
 import Foundation
 import coinbase_official
+import Alamofire
 
-class CoinbaseClient {
-    static let sharedInstance = CoinbaseClient()
+class ApiClient {
+    static let sharedInstance = ApiClient()
     private var client: Coinbase = Coinbase()
     
     private init() {
     }
     
-    func setupWithAccessToken(oAuthAccessToken accessToken: String!) {
+    func setupCoinbaseAccessToken(oAuthAccessToken accessToken: String!) {
         client = Coinbase(oAuthAccessToken: accessToken)
         debugPrint("initialized Coinbase with token \(accessToken)")
     }
@@ -36,4 +37,23 @@ class CoinbaseClient {
         }
     }
     
+    func getHistoricalPrice(withRouter: CoindeskRouter) {
+        Alamofire
+            .request(withRouter)
+            .validate()
+            .responseJSON { (response: DataResponse<Any>) in
+                guard response.result.isSuccess else {
+                    print("Error while fetching historical price data: \(response.result.error)")
+                    return
+                }
+                
+                guard let value = response.result.value as? [String: Any],
+                      let bpi = value["bpi"] as? [String: Any] else {
+                        print("Invalid data received from Coindesk API")
+                        return
+                }
+                
+                debugPrint(bpi)
+        }
+    }
 }

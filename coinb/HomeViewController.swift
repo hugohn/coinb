@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
         
         backgroundQueue.async {
             // Background thread
-            CoinbaseClient.sharedInstance.getSpotPrice(withCurrency: "USD") { (price: String?) in
+            ApiClient.sharedInstance.getSpotPrice(withCurrency: "USD") { (price: String?) in
                 self.spinner?.hide(animated: true)
                 guard let price = price else { return }
                 
@@ -38,6 +38,8 @@ class HomeViewController: UIViewController {
                     self.priceLabel.text = price
                 }
             }
+            
+            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Week("USD"))
         }
     }
 

@@ -1,5 +1,9 @@
 PODS:
   - Alamofire (4.4.0)
+  - Charts/Core (3.0.1)
+  - Charts/Realm (3.0.1):
+    - Charts/Core
+    - RealmSwift (~> 1.1)
   - coinbase-official (3.3.0):
     - coinbase-official/client (= 3.3.0)
     - coinbase-official/core (= 3.3.0)
@@ -10,17 +14,26 @@ PODS:
   - coinbase-official/OAuth (3.3.0):
     - coinbase-official/core
   - MBProgressHUD (1.0.0)
+  - Realm (1.1.0):
+    - Realm/Headers (= 1.1.0)
+  - Realm/Headers (1.1.0)
+  - RealmSwift (1.1.0):
+    - Realm (= 1.1.0)
 
 DEPENDENCIES:
   - Alamofire
+  - Charts/Realm
   - coinbase-official
   - MBProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
   coinbase-official: 57de4952bdb85e16a8f99930c57e16505ff571ed
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  Realm: ceecf1a4540c4ce9efe196fe73fa9855bce05bd8
+  RealmSwift: 838058b2db95b12cb86bd0cf209df642c33fb60a
 
-PODFILE CHECKSUM: 3bbbbdfc8ef3900e5acb076798711c5d5405b637
+PODFILE CHECKSUM: 646dbaae8776ca649139b1bad831195d44100d03
 
 COCOAPODS: 1.2.0

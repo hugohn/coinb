@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // Do something with them (store them, etc.)
                     if let result = result as? [String : AnyObject] {
                         if let accessToken = result["access_token"] as? String {
-                            CoinbaseClient.sharedInstance.setupWithAccessToken(oAuthAccessToken: accessToken)
+                            ApiClient.sharedInstance.setupCoinbaseAccessToken(oAuthAccessToken: accessToken)
                         }
                     }
                     // Note that you should also store 'expire_in' and refresh the token using CoinbaseOAuth.getOAuthTokensForRefreshToken() when it expires
