@@ -42,6 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = hamburgerVC
         window?.makeKeyAndVisible()
         
+        UIApplication.shared.statusBarStyle = .lightContent
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = Constants.primaryColor
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
         return true
     }
 
