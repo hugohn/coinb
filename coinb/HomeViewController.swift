@@ -12,7 +12,7 @@ import Charts
 
 class HomeViewController: UIViewController {
 
-    @IBOutlet weak var priceLabel: UITextView!
+    @IBOutlet weak var priceBtn: UIButton!
     @IBOutlet weak var priceSublabel: UITextView!
     @IBOutlet weak var chartView: LineChartView!
     
@@ -73,8 +73,10 @@ class HomeViewController: UIViewController {
         }
         setButtonSelected(index: 0)
         
-        priceLabel.backgroundColor = UIColor.clear
-        priceLabel.textColor = UIColor.white
+        priceBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
+        priceBtn.setTitleColor(Constants.grayColor, for: UIControlState.selected)
+        priceBtn.addTarget(self, action: #selector(onPriceBtnTapped), for: UIControlEvents.touchUpInside)
+        
         priceSublabel.backgroundColor = UIColor.clear
         priceSublabel.textColor = UIColor.white
         
@@ -87,6 +89,10 @@ class HomeViewController: UIViewController {
         chartView.backgroundColor = UIColor.clear
         chartView.legend.enabled = false
         chartView.tintColor = UIColor.white
+    }
+    
+    func onPriceBtnTapped() {
+        ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
     }
     
     func onModeBtnTapped(sender: UIButton) {
@@ -144,7 +150,7 @@ class HomeViewController: UIViewController {
             // UI Updates
             if let priceDouble = Double(price) {
                 let priceNumber = NSNumber(value: priceDouble)
-                self.priceLabel.text = Constants.currencyFormatter.string(from: priceNumber)
+                self.priceBtn.setTitle(Constants.currencyFormatter.string(from: priceNumber), for: UIControlState.normal)
             }
         }
     }
