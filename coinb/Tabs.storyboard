@@ -50,16 +50,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xiN-b7-xaw" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="229" width="375" height="209"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiN-b7-xaw" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="208.5" width="375" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Gjs-WQ-0Vl"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xiN-b7-xaw" firstAttribute="leading" secondItem="Fzu-d3-Xie" secondAttribute="leading" id="775-Fc-PLN"/>
                             <constraint firstItem="E3m-cH-RiE" firstAttribute="top" secondItem="Fzu-d3-Xie" secondAttribute="top" constant="100" id="Duz-YV-J7Y"/>
                             <constraint firstItem="E3m-cH-RiE" firstAttribute="centerX" secondItem="Fzu-d3-Xie" secondAttribute="centerX" id="EPd-K2-aSR"/>
+                            <constraint firstAttribute="trailing" secondItem="xiN-b7-xaw" secondAttribute="trailing" id="GUQ-We-AFl"/>
+                            <constraint firstItem="xiN-b7-xaw" firstAttribute="centerY" secondItem="Fzu-d3-Xie" secondAttribute="centerY" id="fcy-r2-QQM"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Price" image="icon_price" id="Cy8-Co-bdm"/>
