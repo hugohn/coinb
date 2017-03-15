@@ -8,10 +8,12 @@
 
 import UIKit
 import MBProgressHUD
+import Charts
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var priceLabel: UITextView!
+    @IBOutlet weak var chartView: LineChartView!
     
     var currency = "USD"
     
@@ -28,6 +30,17 @@ class HomeViewController: UIViewController {
         spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
         spinner?.color = UIColor.clear
         
+        
+        chartView.chartDescription?.enabled = false
+        chartView.dragEnabled = true
+        chartView.highlightPerDragEnabled = true
+        chartView.pinchZoomEnabled = false
+        chartView.drawGridBackgroundEnabled = false
+        
+        chartView.backgroundColor = UIColor.white
+        chartView.legend.enabled = false
+        chartView.tintColor = UIColor.blue
+        
         backgroundQueue.async {
             // Background thread
             ApiClient.sharedInstance.getSpotPrice(withCurrency: self.currency) { (price: String?) in
@@ -40,8 +53,28 @@ class HomeViewController: UIViewController {
                 }
             }
             
-            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
+            ApiClient.sharedInstance.getHistoricalPrice(withCurrency: self.currency, completion: { (result: Bool) in
+                guard result else { return }
+                
+                DispatchQueue.main.async {
+                    // UI Updates
+                    self.updateChartWithData()
+                }
+            })
         }
+    }
+    
+    func updateChartWithData() {
+        var dataEntries: [ChartDataEntry] = []
+        let pricePoints = PricePoint.getPricePoints()
+        for i in 0..<pricePoints.count {
+            let dataEntry = ChartDataEntry(x: Double(i), y: pricePoints[i].price)
+            dataEntries.append(dataEntry)
+        }
+        debugPrint("pricePoints.count = \(pricePoints.count)")
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Price")
+        let chartData = LineChartData(dataSet: chartDataSet)
+        chartView.data = chartData
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,3 +94,4 @@ class HomeViewController: UIViewController {
     */
 
 }
+

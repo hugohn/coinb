@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="E3m-cH-RiE">
-                                <rect key="frame" x="87" y="317" width="200" height="32"/>
+                                <rect key="frame" x="87" y="50" width="200" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="g6h-Gz-74v"/>
@@ -50,21 +50,27 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xiN-b7-xaw" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="229" width="375" height="209"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="E3m-cH-RiE" firstAttribute="centerY" secondItem="Fzu-d3-Xie" secondAttribute="centerY" id="4TK-99-0e8"/>
-                            <constraint firstItem="E3m-cH-RiE" firstAttribute="centerX" secondItem="Fzu-d3-Xie" secondAttribute="centerX" id="ny8-6Z-b2p"/>
+                            <constraint firstItem="E3m-cH-RiE" firstAttribute="centerX" secondItem="Fzu-d3-Xie" secondAttribute="centerX" id="uTp-hd-tXj"/>
+                            <constraint firstItem="E3m-cH-RiE" firstAttribute="top" secondItem="Fzu-d3-Xie" secondAttribute="top" constant="50" id="vi3-8p-4HT"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Price" image="icon_price" id="Cy8-Co-bdm"/>
                     <connections>
+                        <outlet property="chartView" destination="xiN-b7-xaw" id="s5s-3z-eYw"/>
                         <outlet property="priceLabel" destination="E3m-cH-RiE" id="SsY-OZ-RMq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y41-zD-S1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-242" y="-1070"/>
+            <point key="canvasLocation" x="-242.40000000000001" y="-1070.9145427286358"/>
         </scene>
         <!--Tabs Controller-->
         <scene sceneID="yuR-De-kZQ">

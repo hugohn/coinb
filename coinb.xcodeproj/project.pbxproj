@@ -21,6 +21,7 @@
 		9A3501CD1E78E1B900B7033A /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501CC1E78E1B900B7033A /* NewsfeedViewController.swift */; };
 		9A3501D51E78ED8F00B7033A /* TabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501D41E78ED8F00B7033A /* TabsController.swift */; };
 		9A3501D71E78ED9D00B7033A /* Tabs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3501D61E78ED9D00B7033A /* Tabs.storyboard */; };
+		9A3501DF1E7902CB00B7033A /* PricePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501DE1E7902CB00B7033A /* PricePoint.swift */; };
 		FB860E2201370A848CA79657 /* Pods_coinb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BE096859406127E188F5A1 /* Pods_coinb.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		9A3501CC1E78E1B900B7033A /* NewsfeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
 		9A3501D41E78ED8F00B7033A /* TabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsController.swift; sourceTree = "<group>"; };
 		9A3501D61E78ED9D00B7033A /* Tabs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tabs.storyboard; sourceTree = "<group>"; };
+		9A3501DE1E7902CB00B7033A /* PricePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricePoint.swift; sourceTree = "<group>"; };
 		B90D4B656BB7B7E006F69A01 /* Pods-coinb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coinb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-coinb/Pods-coinb.debug.xcconfig"; sourceTree = "<group>"; };
 		C7BE096859406127E188F5A1 /* Pods_coinb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coinb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -82,6 +84,7 @@
 				9A3501D31E78ED6100B7033A /* TabsContainer */,
 				9A3501C61E78D93A00B7033A /* HamburgerContainer */,
 				9A3501BD1E78D2EB00B7033A /* Menu */,
+				9A3501DD1E7902A900B7033A /* Models */,
 				0B73D81C1E76511600EE46AE /* API */,
 				0B73D8071E74A74D00EE46AE /* AppDelegate.swift */,
 				0B73D8111E74A74D00EE46AE /* Assets.xcassets */,
@@ -152,6 +155,14 @@
 				9A3501CC1E78E1B900B7033A /* NewsfeedViewController.swift */,
 			);
 			name = Newsfeed;
+			sourceTree = "<group>";
+		};
+		9A3501DD1E7902A900B7033A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A3501DE1E7902CB00B7033A /* PricePoint.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		C367D2DC5002A9FD2611F8B9 /* Pods */ = {
@@ -291,6 +302,7 @@
 			files = (
 				0BBAF3611E77D65D00D917F9 /* CoindeskRouter.swift in Sources */,
 				9A3501BF1E78D30900B7033A /* MenuViewController.swift in Sources */,
+				9A3501DF1E7902CB00B7033A /* PricePoint.swift in Sources */,
 				0B73D8251E768AB200EE46AE /* HomeViewController.swift in Sources */,
 				0B73D8101E74A74D00EE46AE /* coinb.xcdatamodeld in Sources */,
 				0B73D8201E76515500EE46AE /* ApiClient.swift in Sources */,
