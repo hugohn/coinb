@@ -30,14 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let hamburgerStoryboard = UIStoryboard(name: "Hamburger", bundle: nil)
         let menuStoryboard = UIStoryboard(name: "Menu", bundle: nil)
-        let tabsStoryboard = UIStoryboard(name: "Tabs", bundle: nil)
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
         
         let hamburgerVC = hamburgerStoryboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
         let menuVC = menuStoryboard.instantiateViewController(withIdentifier: "MenuViewController")
-        let tabsController = tabsStoryboard.instantiateViewController(withIdentifier: "TabsController")
+        let homeVC = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
         
         hamburgerVC.menuViewController = menuVC
-        hamburgerVC.contentViewController = tabsController
+        hamburgerVC.contentViewController = homeVC
         
         window?.rootViewController = hamburgerVC
         window?.makeKeyAndVisible()

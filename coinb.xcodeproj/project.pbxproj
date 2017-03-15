@@ -21,13 +21,11 @@
 		0BBAF3711E79AD6E00D917F9 /* MyYAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF3701E79AD6E00D917F9 /* MyYAxisValueFormatter.swift */; };
 		0BBAF3731E79B44A00D917F9 /* MyXAxisMonthFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF3721E79B44A00D917F9 /* MyXAxisMonthFormatter.swift */; };
 		0BBAF3751E79B45E00D917F9 /* MyXAxisYearFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF3741E79B45E00D917F9 /* MyXAxisYearFormatter.swift */; };
+		0BBAF37F1E79C5A500D917F9 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BBAF37E1E79C5A500D917F9 /* Home.storyboard */; };
 		9A3501BF1E78D30900B7033A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501BE1E78D30900B7033A /* MenuViewController.swift */; };
 		9A3501C51E78D4C500B7033A /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3501C41E78D4C500B7033A /* Menu.storyboard */; };
 		9A3501C81E78D95100B7033A /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501C71E78D95100B7033A /* HamburgerViewController.swift */; };
 		9A3501CA1E78D95C00B7033A /* Hamburger.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3501C91E78D95C00B7033A /* Hamburger.storyboard */; };
-		9A3501CD1E78E1B900B7033A /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501CC1E78E1B900B7033A /* NewsfeedViewController.swift */; };
-		9A3501D51E78ED8F00B7033A /* TabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501D41E78ED8F00B7033A /* TabsController.swift */; };
-		9A3501D71E78ED9D00B7033A /* Tabs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3501D61E78ED9D00B7033A /* Tabs.storyboard */; };
 		9A3501DF1E7902CB00B7033A /* PricePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501DE1E7902CB00B7033A /* PricePoint.swift */; };
 		FB860E2201370A848CA79657 /* Pods_coinb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BE096859406127E188F5A1 /* Pods_coinb.framework */; };
 /* End PBXBuildFile section */
@@ -49,14 +47,12 @@
 		0BBAF3701E79AD6E00D917F9 /* MyYAxisValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyYAxisValueFormatter.swift; sourceTree = "<group>"; };
 		0BBAF3721E79B44A00D917F9 /* MyXAxisMonthFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyXAxisMonthFormatter.swift; sourceTree = "<group>"; };
 		0BBAF3741E79B45E00D917F9 /* MyXAxisYearFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyXAxisYearFormatter.swift; sourceTree = "<group>"; };
+		0BBAF37E1E79C5A500D917F9 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		68CF20D81C22FB2844818060 /* Pods-coinb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coinb.release.xcconfig"; path = "Pods/Target Support Files/Pods-coinb/Pods-coinb.release.xcconfig"; sourceTree = "<group>"; };
 		9A3501BE1E78D30900B7033A /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9A3501C41E78D4C500B7033A /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		9A3501C71E78D95100B7033A /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
 		9A3501C91E78D95C00B7033A /* Hamburger.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Hamburger.storyboard; sourceTree = "<group>"; };
-		9A3501CC1E78E1B900B7033A /* NewsfeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
-		9A3501D41E78ED8F00B7033A /* TabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsController.swift; sourceTree = "<group>"; };
-		9A3501D61E78ED9D00B7033A /* Tabs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tabs.storyboard; sourceTree = "<group>"; };
 		9A3501DE1E7902CB00B7033A /* PricePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricePoint.swift; sourceTree = "<group>"; };
 		B90D4B656BB7B7E006F69A01 /* Pods-coinb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coinb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-coinb/Pods-coinb.debug.xcconfig"; sourceTree = "<group>"; };
 		C7BE096859406127E188F5A1 /* Pods_coinb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coinb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,9 +91,9 @@
 		0B73D8061E74A74D00EE46AE /* coinb */ = {
 			isa = PBXGroup;
 			children = (
-				9A3501D31E78ED6100B7033A /* TabsContainer */,
 				9A3501C61E78D93A00B7033A /* HamburgerContainer */,
 				9A3501BD1E78D2EB00B7033A /* Menu */,
+				9A3501DB1E78FD2200B7033A /* Home */,
 				9A3501DD1E7902A900B7033A /* Models */,
 				0B73D81C1E76511600EE46AE /* API */,
 				0BBAF3681E79691200D917F9 /* Utils */,
@@ -158,31 +154,13 @@
 			name = HamburgerContainer;
 			sourceTree = "<group>";
 		};
-		9A3501D31E78ED6100B7033A /* TabsContainer */ = {
-			isa = PBXGroup;
-			children = (
-				9A3501DB1E78FD2200B7033A /* Home */,
-				9A3501DC1E78FD2700B7033A /* Newsfeed */,
-				9A3501D61E78ED9D00B7033A /* Tabs.storyboard */,
-				9A3501D41E78ED8F00B7033A /* TabsController.swift */,
-			);
-			name = TabsContainer;
-			sourceTree = "<group>";
-		};
 		9A3501DB1E78FD2200B7033A /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				0B73D8241E768AB200EE46AE /* HomeViewController.swift */,
+				0BBAF37E1E79C5A500D917F9 /* Home.storyboard */,
 			);
 			name = Home;
-			sourceTree = "<group>";
-		};
-		9A3501DC1E78FD2700B7033A /* Newsfeed */ = {
-			isa = PBXGroup;
-			children = (
-				9A3501CC1E78E1B900B7033A /* NewsfeedViewController.swift */,
-			);
-			name = Newsfeed;
 			sourceTree = "<group>";
 		};
 		9A3501DD1E7902A900B7033A /* Models */ = {
@@ -267,8 +245,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B73D8151E74A74D00EE46AE /* LaunchScreen.storyboard in Resources */,
-				9A3501D71E78ED9D00B7033A /* Tabs.storyboard in Resources */,
 				0B73D8121E74A74D00EE46AE /* Assets.xcassets in Resources */,
+				0BBAF37F1E79C5A500D917F9 /* Home.storyboard in Resources */,
 				9A3501C51E78D4C500B7033A /* Menu.storyboard in Resources */,
 				9A3501CA1E78D95C00B7033A /* Hamburger.storyboard in Resources */,
 			);
@@ -340,10 +318,8 @@
 				0B73D8101E74A74D00EE46AE /* coinb.xcdatamodeld in Sources */,
 				0B73D8201E76515500EE46AE /* ApiClient.swift in Sources */,
 				0B73D8081E74A74D00EE46AE /* AppDelegate.swift in Sources */,
-				9A3501D51E78ED8F00B7033A /* TabsController.swift in Sources */,
 				0BBAF3751E79B45E00D917F9 /* MyXAxisYearFormatter.swift in Sources */,
 				9A3501C81E78D95100B7033A /* HamburgerViewController.swift in Sources */,
-				9A3501CD1E78E1B900B7033A /* NewsfeedViewController.swift in Sources */,
 				0BBAF36C1E799F8300D917F9 /* MyFillFormatter.swift in Sources */,
 				0BBAF3671E794D0600D917F9 /* Constants.swift in Sources */,
 			);

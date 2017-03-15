@@ -82,3 +82,4 @@ struct Constants {
         return locale.displayName(forKey: NSLocale.Key.currencySymbol, value: code)
     }
 }
+
