@@ -13,6 +13,7 @@ import Charts
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var priceLabel: UITextView!
+    @IBOutlet weak var priceSublabel: UITextView!
     @IBOutlet weak var chartView: LineChartView!
     
     var currency = "USD"
@@ -59,6 +60,8 @@ class HomeViewController: UIViewController {
         
         priceLabel.backgroundColor = UIColor.clear
         priceLabel.textColor = UIColor.white
+        priceSublabel.backgroundColor = UIColor.clear
+        priceSublabel.textColor = UIColor.white
         
         chartView.chartDescription?.enabled = false
         chartView.dragEnabled = false

@@ -41,13 +41,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="E3m-cH-RiE">
-                                <rect key="frame" x="106" y="100" width="163.5" height="54.5"/>
+                                <rect key="frame" x="119" y="60" width="138" height="53"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="Erj-NW-PDs"/>
-                                    <constraint firstAttribute="width" constant="164" id="x9t-KC-ehn"/>
+                                    <constraint firstAttribute="width" constant="138" id="QWr-1o-MiR"/>
+                                    <constraint firstAttribute="height" constant="53" id="bwV-Hx-TWn"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Bitcoin Price" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="joX-If-330">
+                                <rect key="frame" x="131" y="113" width="113" height="39"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="113" id="Knx-xM-4X2"/>
+                                    <constraint firstAttribute="height" constant="39" id="ezX-9O-KlI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiN-b7-xaw" customClass="LineChartView" customModule="Charts">
@@ -61,9 +71,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xiN-b7-xaw" firstAttribute="leading" secondItem="Fzu-d3-Xie" secondAttribute="leading" id="775-Fc-PLN"/>
-                            <constraint firstItem="E3m-cH-RiE" firstAttribute="top" secondItem="Fzu-d3-Xie" secondAttribute="top" constant="100" id="Duz-YV-J7Y"/>
-                            <constraint firstItem="E3m-cH-RiE" firstAttribute="centerX" secondItem="Fzu-d3-Xie" secondAttribute="centerX" id="EPd-K2-aSR"/>
+                            <constraint firstItem="E3m-cH-RiE" firstAttribute="centerX" secondItem="Fzu-d3-Xie" secondAttribute="centerX" id="7kX-vU-P55"/>
                             <constraint firstAttribute="trailing" secondItem="xiN-b7-xaw" secondAttribute="trailing" id="GUQ-We-AFl"/>
+                            <constraint firstItem="joX-If-330" firstAttribute="top" secondItem="E3m-cH-RiE" secondAttribute="bottom" id="Vea-2f-91V"/>
+                            <constraint firstItem="E3m-cH-RiE" firstAttribute="top" secondItem="z7C-SA-uEe" secondAttribute="bottom" constant="40" id="Xjh-a9-be9"/>
+                            <constraint firstItem="joX-If-330" firstAttribute="centerX" secondItem="Fzu-d3-Xie" secondAttribute="centerX" id="br9-6J-zLQ"/>
                             <constraint firstItem="xiN-b7-xaw" firstAttribute="centerY" secondItem="Fzu-d3-Xie" secondAttribute="centerY" id="fcy-r2-QQM"/>
                         </constraints>
                     </view>
@@ -71,6 +83,7 @@
                     <connections>
                         <outlet property="chartView" destination="xiN-b7-xaw" id="s5s-3z-eYw"/>
                         <outlet property="priceLabel" destination="E3m-cH-RiE" id="SsY-OZ-RMq"/>
+                        <outlet property="priceSublabel" destination="joX-If-330" id="02g-pM-aO1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y41-zD-S1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
