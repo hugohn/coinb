@@ -187,9 +187,15 @@ class HomeViewController: UIViewController {
             dataEntries.append(dataEntry)
         }
         debugPrint("pricePoints.count = \(pricePoints.count)")
-        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Price")
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: "")
+        chartDataSet.fillFormatter = MyFillFormatter()
+        chartDataSet.drawFilledEnabled = true
+        chartDataSet.drawCirclesEnabled = false
+        chartDataSet.drawCircleHoleEnabled = false
+        chartDataSet.drawValuesEnabled = false
+        chartDataSet.mode = .linear
 //        chartDataSet.colors = ChartColorTemplates.vordiplom()
-        chartDataSet.drawCubicEnabled = true
+//        chartDataSet.drawCubicEnabled = true
         let chartData = LineChartData(dataSet: chartDataSet)
         
         DispatchQueue.main.async {

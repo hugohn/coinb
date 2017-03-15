@@ -16,6 +16,7 @@
 		0BBAF3611E77D65D00D917F9 /* CoindeskRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF3601E77D65D00D917F9 /* CoindeskRouter.swift */; };
 		0BBAF3651E793E4D00D917F9 /* PriceQueryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF3641E793E4D00D917F9 /* PriceQueryCache.swift */; };
 		0BBAF3671E794D0600D917F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF3661E794D0600D917F9 /* Constants.swift */; };
+		0BBAF36C1E799F8300D917F9 /* MyFillFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF36B1E799F8300D917F9 /* MyFillFormatter.swift */; };
 		9A3501BF1E78D30900B7033A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501BE1E78D30900B7033A /* MenuViewController.swift */; };
 		9A3501C51E78D4C500B7033A /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3501C41E78D4C500B7033A /* Menu.storyboard */; };
 		9A3501C81E78D95100B7033A /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501C71E78D95100B7033A /* HamburgerViewController.swift */; };
@@ -39,6 +40,7 @@
 		0BBAF3601E77D65D00D917F9 /* CoindeskRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoindeskRouter.swift; sourceTree = "<group>"; };
 		0BBAF3641E793E4D00D917F9 /* PriceQueryCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceQueryCache.swift; sourceTree = "<group>"; };
 		0BBAF3661E794D0600D917F9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0BBAF36B1E799F8300D917F9 /* MyFillFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFillFormatter.swift; sourceTree = "<group>"; };
 		68CF20D81C22FB2844818060 /* Pods-coinb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coinb.release.xcconfig"; path = "Pods/Target Support Files/Pods-coinb/Pods-coinb.release.xcconfig"; sourceTree = "<group>"; };
 		9A3501BE1E78D30900B7033A /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9A3501C41E78D4C500B7033A /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				0BBAF3661E794D0600D917F9 /* Constants.swift */,
+				0BBAF36B1E799F8300D917F9 /* MyFillFormatter.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				9A3501D51E78ED8F00B7033A /* TabsController.swift in Sources */,
 				9A3501C81E78D95100B7033A /* HamburgerViewController.swift in Sources */,
 				9A3501CD1E78E1B900B7033A /* NewsfeedViewController.swift in Sources */,
+				0BBAF36C1E799F8300D917F9 /* MyFillFormatter.swift in Sources */,
 				0BBAF3671E794D0600D917F9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
