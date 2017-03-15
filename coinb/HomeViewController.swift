@@ -27,11 +27,15 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var divider3: UIView!
     
     var currency = "USD"
+    var prevPrice: Double?
     var spinner: MBProgressHUD?
+    
+    let spotRefreshInterval = 3.0
+    let priceAnimatationDuration = 1.0
+    
     let backgroundQueue = DispatchQueue(label: "com.hugohn.coinb",
                                         qos: .background,
                                         target: nil)
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +46,12 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onNewHomeData(notification:)), name: NSNotification.Name(rawValue: Constants.kNewHomeData), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onLoadingHome(notification:)), name: NSNotification.Name(rawValue: Constants.kLoadingHomeData), object: nil)
         
-        backgroundQueue.async {
-            // Background thread
-            ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
-            ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Year(self.currency))
+        Timer.scheduledTimer(withTimeInterval: spotRefreshInterval, repeats: true) { (Timer) in
+            self.backgroundQueue.async {
+                ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
+            }
         }
+        onModeBtnTapped(sender: yearModeBtn)
     }
     
     deinit {
@@ -71,11 +76,9 @@ class HomeViewController: UIViewController {
             button.tag = index
             button.addTarget(self, action: #selector(onModeBtnTapped(sender:)), for: UIControlEvents.touchUpInside)
         }
-        setButtonSelected(index: 2)
         
         priceBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
         priceBtn.setTitleColor(Constants.grayColor, for: UIControlState.selected)
-        priceBtn.addTarget(self, action: #selector(onPriceBtnTapped), for: UIControlEvents.touchUpInside)
         
         priceSublabel.backgroundColor = UIColor.clear
         priceSublabel.textColor = UIColor.white
@@ -114,30 +117,29 @@ class HomeViewController: UIViewController {
         leftAxis.valueFormatter = MyYAxisValueFormatter()
     }
     
-    func onPriceBtnTapped() {
-        ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
-    }
-    
     func onModeBtnTapped(sender: UIButton) {
         setButtonSelected(index: sender.tag)
-        ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
         chartView.clear()
         
-        switch sender.tag {
-        case 0:
-            ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
-            break
-        case 1:
-            ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Month(self.currency))
-            break
-        case 2:
-            ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Year(self.currency))
-            break
-        case 3:
-            ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.All(self.currency))
-            break
-        default:
-            break
+        backgroundQueue.async {
+            ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
+            
+            switch sender.tag {
+            case 0:
+                ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
+                break
+            case 1:
+                ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Month(self.currency))
+                break
+            case 2:
+                ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Year(self.currency))
+                break
+            case 3:
+                ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.All(self.currency))
+                break
+            default:
+                break
+            }
         }
     }
     
@@ -181,8 +183,26 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.async {
             // UI Updates
             if let priceDouble = Double(price) {
+                
                 let priceNumber = NSNumber(value: priceDouble)
-                self.priceBtn.setTitle(Constants.currencyFormatter.string(from: priceNumber), for: UIControlState.normal)
+                var animateColor = UIColor.white
+                
+                // flash red if price is decreasing, green otherwise
+                if self.prevPrice != nil && self.prevPrice != priceDouble {
+                    if self.prevPrice! > priceDouble {
+                        animateColor = UIColor.red
+                    } else {
+                        animateColor = UIColor.green
+                    }
+                }
+                
+                UIView.transition(with: self.priceBtn, duration: self.priceAnimatationDuration, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+                    self.priceBtn.setTitleColor(animateColor, for: UIControlState.normal)
+                }, completion: { (Bool) in
+                    self.priceBtn.setTitle(Constants.currencyFormatter.string(from: priceNumber), for: UIControlState.normal)
+                    self.priceBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
+                    self.prevPrice = priceDouble
+                })
             }
         }
     }
