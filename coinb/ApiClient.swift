@@ -95,13 +95,17 @@ class ApiClient {
             let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)! as String
             let query = router.urlRequest?.url?.absoluteString ?? "N/A"
             
+            var updateCache = true
             if let existingCache = PriceQueryCache.getPriceCache(type: router.type) {
-                if existingCache.json != jsonString {
-                    PriceQueryCache.addPriceCache(type: router.type, query: query, json: jsonString)
-                    debugPrint("[CACHE] updated cache")
+                if existingCache.json == jsonString {
+                    updateCache = false
                 }
             }
             
+            if updateCache {
+                PriceQueryCache.addPriceCache(type: router.type, query: query, json: jsonString)
+                debugPrint("[CACHE] updated cache")
+            }
         } catch let error as NSError {
             debugPrint(error.localizedDescription)
         }
