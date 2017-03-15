@@ -135,7 +135,9 @@ class HomeViewController: UIViewController {
     
     func showSpinner() {
         spinner = MBProgressHUD.showAdded(to: self.chartView, animated: true)
-        spinner?.color = UIColor.clear
+        spinner?.bezelView.style = MBProgressHUDBackgroundStyle.solidColor
+        spinner?.bezelView.color = UIColor.clear
+        spinner?.contentColor = UIColor.white
     }
     
     func hideSpinner() {
