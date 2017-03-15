@@ -17,7 +17,7 @@ This simple app is inspired by the original [Coinbase app](https://itunes.apple.
 # Other concepts touched:
 - Container view
 - Grand Central Dispatch
-- KVO Notification
+- Notifications
 - Data caching
 - Date & currency formatting
 - Gesture recognizer
