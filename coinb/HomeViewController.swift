@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
                 }
             }
             
-            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
+            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Month(self.currency))
         }
     }
     

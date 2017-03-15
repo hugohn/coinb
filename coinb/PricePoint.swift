@@ -34,17 +34,17 @@ class PricePoint: Object {
         }
     }
     
-    class func addPricePoint(currency: String!, date: String!, price: Double) {
+    class func addPricePoint(currency: String!, date: String!, price: Double) -> PricePoint? {
         let key = currency + date
         do {
             let realm = try Realm()
             if realm.object(ofType: PricePoint.self, forPrimaryKey: key) != nil {
-                //debugPrint("Price point already exists")
-                return
+//                debugPrint("Price point already exists")
+                return nil
             }
         } catch let error as NSError {
             debugPrint(error.localizedDescription)
-            return
+            return nil
         }
         
         let pricePoint = PricePoint()
@@ -53,6 +53,8 @@ class PricePoint: Object {
         pricePoint.date = CoindeskRouter.dateFormatter.date(from: date)!
         pricePoint.price = price
         pricePoint.save()
+        
+        return pricePoint
     }
     
     class func getPricePoints(beginningDate: Date!, endDate: Date!) -> Results<PricePoint> {

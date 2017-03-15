@@ -38,7 +38,7 @@ class ApiClient {
     }
     
     func getHistoricalPrice(withRouter router: CoindeskRouter) {
-        guard checkPriceQueryCache(router: router) == false else { return }
+        checkPriceQueryCache(router: router)
         
         // fire API request
         debugPrint("hitting API")
@@ -62,38 +62,31 @@ class ApiClient {
         }
     }
     
-    func checkPriceQueryCache(router: CoindeskRouter) -> Bool {
-        guard let priceQueryCache = PriceQueryCache.getPriceCache(type: router.type) else { return false }
-
-//        NotificationCenter.default.post(name:Notification.Name(rawValue: kNewHomeData),
-//                                        object: nil,
-//                                        userInfo: ["beginningDate": router.beginningDate, "endDate": router.endDate])
-
-        // has cache data, notify home so UI can be immediately updated
-        debugPrint("[CACHE] json = \(priceQueryCache.json)")
-        if let data = priceQueryCache.json.data(using: .utf8) {
-            do {
-                if let bpi = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Double] {
-                    processPriceData(router: router, bpi: bpi)
-                    debugPrint("[CACHE] loaded.")
-                }
-            } catch {
-                debugPrint(error.localizedDescription)
-            }
+    func checkPriceQueryCache(router: CoindeskRouter) {
+        if PriceQueryCache.getPriceCache(type: router.type) != nil {
+            // has cache data, notify home so UI can be immediately updated
+            NotificationCenter.default.post(name:Notification.Name(rawValue: kNewHomeData),
+                                            object: nil,
+                                            userInfo: ["beginningDate": router.beginningDate, "endDate": router.endDate])
+            
         }
-
-        return true
     }
     
     func processPriceData(router: CoindeskRouter, bpi: [String: Double]) {
+        var hasNewData = false
         for (date, price) in bpi {
             debugPrint("[RAW] date = \(date); price = \(price)")
-            PricePoint.addPricePoint(currency: router.currency, date: date, price: price)
+            if PricePoint.addPricePoint(currency: router.currency, date: date, price: price) != nil {
+                hasNewData = true
+            }
         }
         
-        NotificationCenter.default.post(name:Notification.Name(rawValue: kNewHomeData),
-                                        object: nil,
-                                        userInfo: ["beginningDate": router.beginningDate, "endDate": router.endDate])
+        if hasNewData {
+            debugPrint("[RAW] hasNewData")
+            NotificationCenter.default.post(name:Notification.Name(rawValue: kNewHomeData),
+                                            object: nil,
+                                            userInfo: ["beginningDate": router.beginningDate, "endDate": router.endDate])
+        }
     }
     
     func updatePriceQueryCache(router: CoindeskRouter, bpi: [String: Double]) {
@@ -101,7 +94,14 @@ class ApiClient {
             let jsonData: Data = try JSONSerialization.data(withJSONObject: bpi, options: [])
             let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)! as String
             let query = router.urlRequest?.url?.absoluteString ?? "N/A"
-            PriceQueryCache.addPriceCache(type: router.type, query: query, json: jsonString)
+            
+            if let existingCache = PriceQueryCache.getPriceCache(type: router.type) {
+                if existingCache.json != jsonString {
+                    PriceQueryCache.addPriceCache(type: router.type, query: query, json: jsonString)
+                    debugPrint("[CACHE] updated cache")
+                }
+            }
+            
         } catch let error as NSError {
             debugPrint(error.localizedDescription)
         }
