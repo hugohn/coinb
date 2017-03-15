@@ -38,7 +38,13 @@ class ApiClient {
     }
     
     func getHistoricalPrice(withRouter router: CoindeskRouter) {
-        checkPriceQueryCache(router: router)
+        let hasCache = checkPriceQueryCache(router: router)
+        
+        if !hasCache {
+            NotificationCenter.default.post(name:Notification.Name(rawValue: Constants.kLoadingHomeData),
+                                            object: nil,
+                                            userInfo: ["doneLoading": false])
+        }
         
         // fire API request
         debugPrint("hitting API")
@@ -46,6 +52,12 @@ class ApiClient {
             .request(router)
             .validate()
             .responseJSON { (response: DataResponse<Any>) in
+                if !hasCache {
+                    NotificationCenter.default.post(name:Notification.Name(rawValue: Constants.kLoadingHomeData),
+                                                    object: nil,
+                                                    userInfo: ["doneLoading": true])
+                }
+                
                 guard response.result.isSuccess else {
                     print("Error while fetching historical price data: \(response.result.error)")
                     return
@@ -62,14 +74,15 @@ class ApiClient {
         }
     }
     
-    func checkPriceQueryCache(router: CoindeskRouter) {
-        if PriceQueryCache.getPriceCache(type: router.type) != nil {
-            // has cache data, notify home so UI can be immediately updated
-            NotificationCenter.default.post(name:Notification.Name(rawValue: Constants.kNewHomeData),
-                                            object: nil,
-                                            userInfo: ["beginningDate": router.beginningDate, "endDate": router.endDate])
-            
-        }
+    func checkPriceQueryCache(router: CoindeskRouter) -> Bool {
+        guard PriceQueryCache.getPriceCache(type: router.type) != nil else { return false }
+        
+        // has cache data, notify home so UI can be immediately updated
+        NotificationCenter.default.post(name:Notification.Name(rawValue: Constants.kNewHomeData),
+                                        object: nil,
+                                        userInfo: ["beginningDate": router.beginningDate, "endDate": router.endDate])
+        
+        return true
     }
     
     func processPriceData(router: CoindeskRouter, bpi: [String: Double]) {

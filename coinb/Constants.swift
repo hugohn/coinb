@@ -11,6 +11,7 @@ import UIKit
 
 struct Constants {
     static let kNewHomeData = "kNewHomeData"
+    static let kLoadingHomeData = "kLoadingHomeData"
     
     static var currencyFormatter: NumberFormatter {
         struct Static {

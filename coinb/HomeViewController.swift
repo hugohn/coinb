@@ -41,6 +41,7 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupViews()
         NotificationCenter.default.addObserver(self, selector: #selector(onNewHomeData(notification:)), name: NSNotification.Name(rawValue: Constants.kNewHomeData), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onLoadingHome(notification:)), name: NSNotification.Name(rawValue: Constants.kLoadingHomeData), object: nil)
         
         showSpinner()
         backgroundQueue.async {
@@ -133,12 +134,27 @@ class HomeViewController: UIViewController {
     }
     
     func showSpinner() {
-        spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
+        spinner = MBProgressHUD.showAdded(to: self.chartView, animated: true)
         spinner?.color = UIColor.clear
     }
     
     func hideSpinner() {
         self.spinner?.hide(animated: true)
+        MBProgressHUD.hide(for: self.chartView, animated: true)
+    }
+    
+    func onLoadingHome(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let doneLoading = userInfo["doneLoading"] as? Bool else { return }
+        
+        debugPrint("doneLoading = \(doneLoading)")
+        DispatchQueue.main.async {
+            if doneLoading {
+                self.hideSpinner()
+            } else {
+                self.showSpinner()
+            }
+        }
     }
     
     func onNewHomeData(notification: Notification) {
