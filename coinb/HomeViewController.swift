@@ -13,6 +13,8 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var priceLabel: UITextView!
     
+    var currency = "USD"
+    
     let backgroundQueue = DispatchQueue(label: "com.hugohn.coinb",
                                         qos: .background,
                                         target: nil)
@@ -23,14 +25,12 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor.green
-        
         spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
         spinner?.color = UIColor.clear
         
         backgroundQueue.async {
             // Background thread
-            ApiClient.sharedInstance.getSpotPrice(withCurrency: "USD") { (price: String?) in
+            ApiClient.sharedInstance.getSpotPrice(withCurrency: self.currency) { (price: String?) in
                 self.spinner?.hide(animated: true)
                 guard let price = price else { return }
                 
@@ -40,7 +40,7 @@ class HomeViewController: UIViewController {
                 }
             }
             
-            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Week("USD"))
+            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
         }
     }
 
