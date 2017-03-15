@@ -37,8 +37,8 @@ class ApiClient {
         }
     }
     
-    func getHistoricalPrice(withCurrency: String!, completion: ((Bool) -> ())!) {
-        let urlConvertible = CoindeskRouter.Year(withCurrency)
+    func getHistoricalPrice(withCurrency: String!, completion: ((Bool, String) -> ())!) {
+        let urlConvertible = CoindeskRouter.Week(withCurrency)
         let urlString = urlConvertible.urlRequest?.url?.absoluteString ?? "NA"
         
         Alamofire
@@ -47,14 +47,14 @@ class ApiClient {
             .responseJSON { (response: DataResponse<Any>) in
                 guard response.result.isSuccess else {
                     print("Error while fetching historical price data: \(response.result.error)")
-                    completion(false)
+                    completion(false, urlString)
                     return
                 }
                 
                 guard let value = response.result.value as? [String: Any],
                       let bpi = value["bpi"] as? [String: Double] else {
                         print("Invalid data received from Coindesk API")
-                        completion(false)
+                        completion(false, urlString)
                         return
                 }
                 
@@ -63,7 +63,7 @@ class ApiClient {
                     PricePoint.addPricePoint(query: urlString, currency: withCurrency, date: date, price: price)
                 }
                 
-                completion(true)
+                completion(true, urlString)
         }
     }
 }

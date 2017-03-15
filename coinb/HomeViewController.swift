@@ -53,20 +53,20 @@ class HomeViewController: UIViewController {
                 }
             }
             
-            ApiClient.sharedInstance.getHistoricalPrice(withCurrency: self.currency, completion: { (result: Bool) in
+            ApiClient.sharedInstance.getHistoricalPrice(withCurrency: self.currency, completion: { (result: Bool, query: String) in
                 guard result else { return }
                 
                 DispatchQueue.main.async {
                     // UI Updates
-                    self.updateChartWithData()
+                    self.updateChartWithData(query: query)
                 }
             })
         }
     }
     
-    func updateChartWithData() {
+    func updateChartWithData(query: String) {
         var dataEntries: [ChartDataEntry] = []
-        let pricePoints = PricePoint.getPricePoints()
+        let pricePoints = PricePoint.getPricePoints(query: query)
         for i in 0..<pricePoints.count {
             let dataEntry = ChartDataEntry(x: Double(i), y: pricePoints[i].price)
             dataEntries.append(dataEntry)
