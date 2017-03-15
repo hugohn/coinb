@@ -66,7 +66,7 @@ struct Constants {
         struct Static {
             static let instance: DateFormatter = DateFormatter()
         }
-        Static.instance.dateFormat = "MM/YY"
+        Static.instance.dateFormat = "MM/yyyy"
         
         return Static.instance
     }
