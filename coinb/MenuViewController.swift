@@ -16,7 +16,7 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor.blue
+        view.backgroundColor = Constants.thirdColor
     }
 
     override func didReceiveMemoryWarning() {

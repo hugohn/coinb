@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +21,47 @@
                     <view key="view" contentMode="scaleToFill" id="ZGU-o9-Kmk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhm-r3-brb">
+                                <rect key="frame" x="0.0" y="0.0" width="275" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btc" translatesAutoresizingMaskIntoConstraints="NO" id="QpH-em-j12">
+                                        <rect key="frame" x="112.5" y="44" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="gXI-2q-6jh"/>
+                                            <constraint firstAttribute="width" secondItem="QpH-em-j12" secondAttribute="height" multiplier="1:1" id="sd4-U9-mXH"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="SegWit FTW" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lKT-Il-NBM">
+                                        <rect key="frame" x="12" y="114" width="251" height="100"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="EjP-i3-TqI"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="d0Y-8b-QOz"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="lKT-Il-NBM" firstAttribute="leading" secondItem="uhm-r3-brb" secondAttribute="leading" constant="12" id="5lm-3q-thD"/>
+                                    <constraint firstItem="QpH-em-j12" firstAttribute="top" secondItem="uhm-r3-brb" secondAttribute="top" constant="44" id="CwP-tX-mBu"/>
+                                    <constraint firstItem="QpH-em-j12" firstAttribute="centerX" secondItem="uhm-r3-brb" secondAttribute="centerX" id="T5D-Pg-s5p"/>
+                                    <constraint firstAttribute="trailing" secondItem="lKT-Il-NBM" secondAttribute="trailing" constant="12" id="pyt-Ex-QDa"/>
+                                    <constraint firstItem="lKT-Il-NBM" firstAttribute="centerX" secondItem="uhm-r3-brb" secondAttribute="centerX" id="tKT-x7-t3H"/>
+                                    <constraint firstItem="lKT-Il-NBM" firstAttribute="top" secondItem="QpH-em-j12" secondAttribute="bottom" constant="20" id="zHF-5e-O9z"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uhm-r3-brb" firstAttribute="top" secondItem="ZGU-o9-Kmk" secondAttribute="top" id="8np-Za-Y8q"/>
+                            <constraint firstItem="eyF-CX-lUW" firstAttribute="top" secondItem="uhm-r3-brb" secondAttribute="bottom" id="9cc-3l-skD"/>
+                            <constraint firstItem="uhm-r3-brb" firstAttribute="leading" secondItem="ZGU-o9-Kmk" secondAttribute="leading" id="IJa-en-jWG"/>
+                            <constraint firstAttribute="trailing" secondItem="uhm-r3-brb" secondAttribute="trailing" constant="100" id="IyU-fJ-qRz"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cm3-1f-y3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -28,4 +69,7 @@
             <point key="canvasLocation" x="441" y="152"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btc" width="75" height="75"/>
+    </resources>
 </document>

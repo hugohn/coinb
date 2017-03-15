@@ -30,8 +30,8 @@ class HomeViewController: UIViewController {
     var prevPrice: Double?
     var spinner: MBProgressHUD?
     
-    let spotRefreshInterval = 3.0
-    let priceAnimatationDuration = 1.0
+    let spotRefreshInterval = 5.0
+    let priceAnimatationDuration = 2.0
     
     let backgroundQueue = DispatchQueue(label: "com.hugohn.coinb",
                                         qos: .background,
