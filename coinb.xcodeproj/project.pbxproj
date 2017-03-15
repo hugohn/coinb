@@ -12,9 +12,15 @@
 		0B73D8121E74A74D00EE46AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B73D8111E74A74D00EE46AE /* Assets.xcassets */; };
 		0B73D8151E74A74D00EE46AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B73D8131E74A74D00EE46AE /* LaunchScreen.storyboard */; };
 		0B73D8201E76515500EE46AE /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73D81F1E76515500EE46AE /* ApiClient.swift */; };
-		0B73D8231E768A8500EE46AE /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B73D8221E768A8500EE46AE /* HomeViewController.storyboard */; };
+		0B73D8231E768A8500EE46AE /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B73D8221E768A8500EE46AE /* Home.storyboard */; };
 		0B73D8251E768AB200EE46AE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73D8241E768AB200EE46AE /* HomeViewController.swift */; };
 		0BBAF3611E77D65D00D917F9 /* CoindeskRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF3601E77D65D00D917F9 /* CoindeskRouter.swift */; };
+		9A3501BF1E78D30900B7033A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501BE1E78D30900B7033A /* MenuViewController.swift */; };
+		9A3501C51E78D4C500B7033A /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3501C41E78D4C500B7033A /* Menu.storyboard */; };
+		9A3501C81E78D95100B7033A /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501C71E78D95100B7033A /* HamburgerViewController.swift */; };
+		9A3501CA1E78D95C00B7033A /* Hamburger.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3501C91E78D95C00B7033A /* Hamburger.storyboard */; };
+		9A3501CD1E78E1B900B7033A /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501CC1E78E1B900B7033A /* NewsfeedViewController.swift */; };
+		9A3501CF1E78E1C600B7033A /* Newsfeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3501CE1E78E1C600B7033A /* Newsfeed.storyboard */; };
 		FB860E2201370A848CA79657 /* Pods_coinb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BE096859406127E188F5A1 /* Pods_coinb.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,10 +32,16 @@
 		0B73D8141E74A74D00EE46AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B73D8161E74A74D00EE46AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B73D81F1E76515500EE46AE /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
-		0B73D8221E768A8500EE46AE /* HomeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
+		0B73D8221E768A8500EE46AE /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0B73D8241E768AB200EE46AE /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0BBAF3601E77D65D00D917F9 /* CoindeskRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoindeskRouter.swift; sourceTree = "<group>"; };
 		68CF20D81C22FB2844818060 /* Pods-coinb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coinb.release.xcconfig"; path = "Pods/Target Support Files/Pods-coinb/Pods-coinb.release.xcconfig"; sourceTree = "<group>"; };
+		9A3501BE1E78D30900B7033A /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		9A3501C41E78D4C500B7033A /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		9A3501C71E78D95100B7033A /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
+		9A3501C91E78D95C00B7033A /* Hamburger.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Hamburger.storyboard; sourceTree = "<group>"; };
+		9A3501CC1E78E1B900B7033A /* NewsfeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
+		9A3501CE1E78E1C600B7033A /* Newsfeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Newsfeed.storyboard; sourceTree = "<group>"; };
 		B90D4B656BB7B7E006F69A01 /* Pods-coinb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coinb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-coinb/Pods-coinb.debug.xcconfig"; sourceTree = "<group>"; };
 		C7BE096859406127E188F5A1 /* Pods_coinb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coinb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -67,6 +79,9 @@
 		0B73D8061E74A74D00EE46AE /* coinb */ = {
 			isa = PBXGroup;
 			children = (
+				9A3501CB1E78E1A200B7033A /* Newsfeed */,
+				9A3501C61E78D93A00B7033A /* HamburgerContainer */,
+				9A3501BD1E78D2EB00B7033A /* Menu */,
 				0B73D8211E768A5F00EE46AE /* Home */,
 				0B73D81C1E76511600EE46AE /* API */,
 				0B73D8071E74A74D00EE46AE /* AppDelegate.swift */,
@@ -90,7 +105,7 @@
 		0B73D8211E768A5F00EE46AE /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				0B73D8221E768A8500EE46AE /* HomeViewController.storyboard */,
+				0B73D8221E768A8500EE46AE /* Home.storyboard */,
 				0B73D8241E768AB200EE46AE /* HomeViewController.swift */,
 			);
 			name = Home;
@@ -102,6 +117,33 @@
 				C7BE096859406127E188F5A1 /* Pods_coinb.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A3501BD1E78D2EB00B7033A /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				9A3501BE1E78D30900B7033A /* MenuViewController.swift */,
+				9A3501C41E78D4C500B7033A /* Menu.storyboard */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		9A3501C61E78D93A00B7033A /* HamburgerContainer */ = {
+			isa = PBXGroup;
+			children = (
+				9A3501C71E78D95100B7033A /* HamburgerViewController.swift */,
+				9A3501C91E78D95C00B7033A /* Hamburger.storyboard */,
+			);
+			name = HamburgerContainer;
+			sourceTree = "<group>";
+		};
+		9A3501CB1E78E1A200B7033A /* Newsfeed */ = {
+			isa = PBXGroup;
+			children = (
+				9A3501CC1E78E1B900B7033A /* NewsfeedViewController.swift */,
+				9A3501CE1E78E1C600B7033A /* Newsfeed.storyboard */,
+			);
+			name = Newsfeed;
 			sourceTree = "<group>";
 		};
 		C367D2DC5002A9FD2611F8B9 /* Pods */ = {
@@ -176,9 +218,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B73D8231E768A8500EE46AE /* HomeViewController.storyboard in Resources */,
+				0B73D8231E768A8500EE46AE /* Home.storyboard in Resources */,
 				0B73D8151E74A74D00EE46AE /* LaunchScreen.storyboard in Resources */,
 				0B73D8121E74A74D00EE46AE /* Assets.xcassets in Resources */,
+				9A3501CF1E78E1C600B7033A /* Newsfeed.storyboard in Resources */,
+				9A3501C51E78D4C500B7033A /* Menu.storyboard in Resources */,
+				9A3501CA1E78D95C00B7033A /* Hamburger.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,10 +283,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BBAF3611E77D65D00D917F9 /* CoindeskRouter.swift in Sources */,
+				9A3501BF1E78D30900B7033A /* MenuViewController.swift in Sources */,
 				0B73D8251E768AB200EE46AE /* HomeViewController.swift in Sources */,
 				0B73D8101E74A74D00EE46AE /* coinb.xcdatamodeld in Sources */,
 				0B73D8201E76515500EE46AE /* ApiClient.swift in Sources */,
 				0B73D8081E74A74D00EE46AE /* AppDelegate.swift in Sources */,
+				9A3501C81E78D95100B7033A /* HamburgerViewController.swift in Sources */,
+				9A3501CD1E78E1B900B7033A /* NewsfeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--HamburgerViewController-->
+        <scene sceneID="PEH-24-J5e">
+            <objects>
+                <viewController storyboardIdentifier="HamburgerViewController" title="HamburgerViewController" id="CXJ-8N-jlS" customClass="HamburgerViewController" customModule="coinb" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bfL-ab-Aa6"/>
+                        <viewControllerLayoutGuide type="bottom" id="aJd-2g-Ply"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h0i-Ol-2BN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="isx-MM-gzq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Unm-h0-anp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="isx-MM-gzq" secondAttribute="trailing" id="I3B-wX-qTg"/>
+                            <constraint firstItem="isx-MM-gzq" firstAttribute="top" secondItem="h0i-Ol-2BN" secondAttribute="top" id="N8a-7d-FM1"/>
+                            <constraint firstItem="Unm-h0-anp" firstAttribute="width" secondItem="h0i-Ol-2BN" secondAttribute="width" id="NGG-af-mOU"/>
+                            <constraint firstAttribute="bottom" secondItem="isx-MM-gzq" secondAttribute="bottom" id="Yge-WU-J3W"/>
+                            <constraint firstItem="Unm-h0-anp" firstAttribute="top" secondItem="h0i-Ol-2BN" secondAttribute="top" id="fAH-KF-iYs"/>
+                            <constraint firstItem="isx-MM-gzq" firstAttribute="leading" secondItem="h0i-Ol-2BN" secondAttribute="leading" id="pt5-N2-n1U"/>
+                            <constraint firstAttribute="bottom" secondItem="Unm-h0-anp" secondAttribute="bottom" id="t6D-1J-7K4"/>
+                            <constraint firstItem="Unm-h0-anp" firstAttribute="leading" secondItem="h0i-Ol-2BN" secondAttribute="leading" id="wXE-U9-xoI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="Unm-h0-anp" id="bdO-uD-i8E"/>
+                        <outlet property="contentViewLeftMargin" destination="wXE-U9-xoI" id="qX4-ZZ-g6x"/>
+                        <outlet property="menuView" destination="isx-MM-gzq" id="DT1-cv-RIj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4uU-Pc-D8y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="95" y="149"/>
+        </scene>
+    </scenes>
+</document>

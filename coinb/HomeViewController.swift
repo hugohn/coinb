@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor.green
         
         spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
         spinner?.color = UIColor.clear

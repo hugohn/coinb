@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HHN-7g-M7D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--HomeViewController-->
         <scene sceneID="saf-Vc-P5T">
             <objects>
-                <viewController storyboardIdentifier="Home" title="HomeViewController" id="HHN-7g-M7D" customClass="HomeViewController" customModule="coinb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" title="HomeViewController" id="HHN-7g-M7D" customClass="HomeViewController" customModule="coinb" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dTd-F5-cOw"/>
                         <viewControllerLayoutGuide type="bottom" id="1wW-iy-e8d"/>

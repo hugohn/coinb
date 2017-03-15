@@ -26,6 +26,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //CoinbaseOAuth.startAuthentication(withClientId: COINBASE_CLIENT_ID, scope: "", redirectUri: COINBASE_REDIRECT_URI, meta: nil)
         
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let hamburgerStoryboard = UIStoryboard(name: "Hamburger", bundle: nil)
+        let menuStoryboard = UIStoryboard(name: "Menu", bundle: nil)
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let newsfeeedStoryboard = UIStoryboard(name: "Newsfeed", bundle: nil)
+        
+        let hamburgerVC = hamburgerStoryboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
+        let menuVC = menuStoryboard.instantiateViewController(withIdentifier: "MenuViewController")
+        
+        let homeVC = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
+        let newsfeedVC = newsfeeedStoryboard.instantiateViewController(withIdentifier: "NewsfeedViewController")
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [homeVC, newsfeedVC]
+        
+        hamburgerVC.menuViewController = menuVC
+        hamburgerVC.contentViewController = tabBarController
+        
+        window?.rootViewController = hamburgerVC
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
