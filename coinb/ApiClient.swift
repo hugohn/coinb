@@ -86,16 +86,16 @@ class ApiClient {
     }
     
     func processPriceData(router: CoindeskRouter, bpi: [String: Double]) {
-        var hasNewData = false
+        var hasNewPricePoint = false
+        let existingCacheForRouter = PriceQueryCache.getPriceCache(type: router.type)
         for (date, price) in bpi {
             //debugPrint("[RAW] date = \(date); price = \(price)")
             if PricePoint.addPricePoint(currency: router.currency, date: date, price: price) != nil {
-                hasNewData = true
+                hasNewPricePoint = true
             }
         }
         
-        if hasNewData {
-            debugPrint("[RAW] hasNewData")
+        if existingCacheForRouter == nil || hasNewPricePoint {
             NotificationCenter.default.post(name:Notification.Name(rawValue: Constants.kNewHomeData),
                                             object: nil,
                                             userInfo: ["beginningDate": router.beginningDate, "endDate": router.endDate])
@@ -109,8 +109,8 @@ class ApiClient {
             let query = router.urlRequest?.url?.absoluteString ?? "N/A"
             
             var updateCache = true
-            if let existingCache = PriceQueryCache.getPriceCache(type: router.type) {
-                if existingCache.json == jsonString {
+            if let existingCacheForRouter = PriceQueryCache.getPriceCache(type: router.type) {
+                if existingCacheForRouter.json == jsonString {
                     updateCache = false
                 }
             }

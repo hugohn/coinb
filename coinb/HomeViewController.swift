@@ -90,13 +90,13 @@ class HomeViewController: UIViewController {
         chartView.backgroundColor = UIColor.clear
         chartView.legend.enabled = false
         chartView.tintColor = UIColor.white
+        chartView.noDataTextColor = Constants.grayColor
+        chartView.noDataText = "Fetching price data..."
         
         chartView.rightAxis.enabled = false
         
-        
         let xAxis = chartView.xAxis
         xAxis.drawAxisLineEnabled = false
-//        xAxis.setLabelCount(3, force: true)
         xAxis.labelCount = 4
         xAxis.labelFont = UIFont(name: "GillSans", size: 12.0)!
         xAxis.labelTextColor = UIColor.white
@@ -121,6 +121,7 @@ class HomeViewController: UIViewController {
     func onModeBtnTapped(sender: UIButton) {
         setButtonSelected(index: sender.tag)
         ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
+        chartView.clear()
         
         switch sender.tag {
         case 0:
@@ -208,8 +209,7 @@ class HomeViewController: UIViewController {
         updateChartWithData(beginningDate: beginningDate, endDate: endDate)
     }
     
-    func updateChartWithData(beginningDate: Date?, endDate: Date?) {
-        guard beginningDate != nil, endDate != nil else { return }
+    func updateChartWithData(beginningDate: Date!, endDate: Date!) {
         var dataEntries: [ChartDataEntry] = []
         let pricePoints = PricePoint.getPricePoints(beginningDate: beginningDate, endDate: endDate)
         for i in 0..<pricePoints.count {
