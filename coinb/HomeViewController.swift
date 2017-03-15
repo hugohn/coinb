@@ -27,13 +27,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var divider3: UIView!
     
     var currency = "USD"
-    
+    var spinner: MBProgressHUD?
     let backgroundQueue = DispatchQueue(label: "com.hugohn.coinb",
                                         qos: .background,
                                         target: nil)
     
-    private var spinner: MBProgressHUD?
-    private let formatter = NumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +51,7 @@ class HomeViewController: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        modeButtons.removeAll()
     }
     
     func setupViews() {
