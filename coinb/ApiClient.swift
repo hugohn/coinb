@@ -22,22 +22,22 @@ class ApiClient {
         debugPrint("initialized Coinbase with token \(accessToken)")
     }
     
-    func getSpotPrice(withCurrency currency: String!, completion: ((String?) -> ())!) {
+    func loadSpotPrice(withCurrency currency: String!) {
         client.getSpotRate(withCurrency: currency) { (balance: CoinbaseBalance?, error: Error?) in
             guard error == nil else {
                 debugPrint("error = \(error.debugDescription)")
-                completion(nil)
                 return
             }
             
             if let balance = balance {
-                debugPrint("1 BTC = \(balance.amount!) \(balance.currency!)")
-                completion(balance.amount)
+                NotificationCenter.default.post(name:Notification.Name(rawValue: Constants.kNewSpotData),
+                                                object: nil,
+                                                userInfo: ["price": balance.amount])
             }
         }
     }
     
-    func getHistoricalPrice(withRouter router: CoindeskRouter) {
+    func loadHistoricalPrice(withRouter router: CoindeskRouter) {
         let hasCache = checkPriceQueryCache(router: router)
         
         if !hasCache {
@@ -88,7 +88,7 @@ class ApiClient {
     func processPriceData(router: CoindeskRouter, bpi: [String: Double]) {
         var hasNewData = false
         for (date, price) in bpi {
-            debugPrint("[RAW] date = \(date); price = \(price)")
+            //debugPrint("[RAW] date = \(date); price = \(price)")
             if PricePoint.addPricePoint(currency: router.currency, date: date, price: price) != nil {
                 hasNewData = true
             }

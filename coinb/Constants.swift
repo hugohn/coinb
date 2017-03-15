@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 struct Constants {
+    static let kNewSpotData = "kNewSpotData"
     static let kNewHomeData = "kNewHomeData"
     static let kLoadingHomeData = "kLoadingHomeData"
     

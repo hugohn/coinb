@@ -40,25 +40,14 @@ class HomeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setupViews()
+        NotificationCenter.default.addObserver(self, selector: #selector(onNewSpotData(notification:)), name: NSNotification.Name(rawValue: Constants.kNewSpotData), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onNewHomeData(notification:)), name: NSNotification.Name(rawValue: Constants.kNewHomeData), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onLoadingHome(notification:)), name: NSNotification.Name(rawValue: Constants.kLoadingHomeData), object: nil)
         
-        showSpinner()
         backgroundQueue.async {
             // Background thread
-            ApiClient.sharedInstance.getSpotPrice(withCurrency: self.currency) { (price: String?) in
-                DispatchQueue.main.async {
-                    // UI Updates
-                    self.hideSpinner()
-                    guard price != nil else { return }
-                    if let priceDouble = Double(price!) {
-                        let priceNumber = NSNumber(value: priceDouble)
-                        self.priceLabel.text = Constants.currencyFormatter.string(from: priceNumber)
-                    }
-                }
-            }
-            
-            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
+            ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
+            ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
         }
     }
     
@@ -103,18 +92,20 @@ class HomeViewController: UIViewController {
     
     func onModeBtnTapped(sender: UIButton) {
         setButtonSelected(index: sender.tag)
+        ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
+        
         switch sender.tag {
         case 0:
-            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
+            ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
             break
         case 1:
-            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Month(self.currency))
+            ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Month(self.currency))
             break
         case 2:
-            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Year(self.currency))
+            ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Year(self.currency))
             break
         case 3:
-            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.All(self.currency))
+            ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.All(self.currency))
             break
         default:
             break
@@ -145,6 +136,20 @@ class HomeViewController: UIViewController {
         MBProgressHUD.hide(for: self.chartView, animated: true)
     }
     
+    func onNewSpotData(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let price = userInfo["price"] as? String else { return }
+        
+        debugPrint("new spot price: 1 BTC = \(price) \(self.currency)")
+        DispatchQueue.main.async {
+            // UI Updates
+            if let priceDouble = Double(price) {
+                let priceNumber = NSNumber(value: priceDouble)
+                self.priceLabel.text = Constants.currencyFormatter.string(from: priceNumber)
+            }
+        }
+    }
+    
     func onLoadingHome(notification: Notification) {
         guard let userInfo = notification.userInfo,
             let doneLoading = userInfo["doneLoading"] as? Bool else { return }
@@ -173,7 +178,7 @@ class HomeViewController: UIViewController {
         let pricePoints = PricePoint.getPricePoints(beginningDate: beginningDate, endDate: endDate)
         for i in 0..<pricePoints.count {
             let dataEntry = ChartDataEntry(x: Double(i), y: pricePoints[i].price)
-            debugPrint("[CHART] date = \(pricePoints[i].date); price = \(pricePoints[i].price)")
+            //debugPrint("[CHART] date = \(pricePoints[i].date); price = \(pricePoints[i].price)")
             dataEntries.append(dataEntry)
         }
         debugPrint("pricePoints.count = \(pricePoints.count)")
