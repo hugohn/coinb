@@ -90,12 +90,12 @@
 				9A3501BD1E78D2EB00B7033A /* Menu */,
 				9A3501DD1E7902A900B7033A /* Models */,
 				0B73D81C1E76511600EE46AE /* API */,
+				0BBAF3681E79691200D917F9 /* Utils */,
 				0B73D8071E74A74D00EE46AE /* AppDelegate.swift */,
 				0B73D8111E74A74D00EE46AE /* Assets.xcassets */,
 				0B73D8131E74A74D00EE46AE /* LaunchScreen.storyboard */,
 				0B73D8161E74A74D00EE46AE /* Info.plist */,
 				0B73D80E1E74A74D00EE46AE /* coinb.xcdatamodeld */,
-				0BBAF3661E794D0600D917F9 /* Constants.swift */,
 			);
 			path = coinb;
 			sourceTree = "<group>";
@@ -107,6 +107,14 @@
 				0BBAF3601E77D65D00D917F9 /* CoindeskRouter.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		0BBAF3681E79691200D917F9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0BBAF3661E794D0600D917F9 /* Constants.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		8B6365FB283DAF78EEC78D64 /* Frameworks */ = {

@@ -22,13 +22,14 @@ class HomeViewController: UIViewController {
                                         target: nil)
     
     private var spinner: MBProgressHUD?
+    private let formatter = NumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setupChartView()
-        NotificationCenter.default.addObserver(self, selector: #selector(onNewHomeData(notification:)), name: NSNotification.Name(rawValue: kNewHomeData), object: nil)
+        setupViews()
+        NotificationCenter.default.addObserver(self, selector: #selector(onNewHomeData(notification:)), name: NSNotification.Name(rawValue: Constants.kNewHomeData), object: nil)
         
         showSpinner()
         backgroundQueue.async {
@@ -37,8 +38,10 @@ class HomeViewController: UIViewController {
                 DispatchQueue.main.async {
                     // UI Updates
                     self.hideSpinner()
-                    if let price = price {
-                        self.priceLabel.text = price
+                    guard price != nil else { return }
+                    if let priceDouble = Double(price!) {
+                        let priceNumber = NSNumber(value: priceDouble)
+                        self.priceLabel.text = Constants.currencyFormatter.string(from: priceNumber)
                     }
                 }
             }
@@ -51,16 +54,21 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func setupChartView() {
+    func setupViews() {
+        view.backgroundColor = Constants.primaryColor
+        
+        priceLabel.backgroundColor = UIColor.clear
+        priceLabel.textColor = UIColor.white
+        
         chartView.chartDescription?.enabled = false
-        chartView.dragEnabled = true
-        chartView.highlightPerDragEnabled = true
+        chartView.dragEnabled = false
+        chartView.highlightPerDragEnabled = false
         chartView.pinchZoomEnabled = false
         chartView.drawGridBackgroundEnabled = false
         
-        chartView.backgroundColor = UIColor.white
+        chartView.backgroundColor = UIColor.clear
         chartView.legend.enabled = false
-        chartView.tintColor = UIColor.blue
+        chartView.tintColor = UIColor.white
     }
     
     func showSpinner() {
@@ -91,6 +99,8 @@ class HomeViewController: UIViewController {
         }
         debugPrint("pricePoints.count = \(pricePoints.count)")
         let chartDataSet = LineChartDataSet(values: dataEntries, label: "Price")
+//        chartDataSet.colors = ChartColorTemplates.vordiplom()
+        chartDataSet.drawCubicEnabled = true
         let chartData = LineChartData(dataSet: chartDataSet)
         
         DispatchQueue.main.async {

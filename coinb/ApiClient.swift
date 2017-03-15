@@ -32,7 +32,7 @@ class ApiClient {
             
             if let balance = balance {
                 debugPrint("1 BTC = \(balance.amount!) \(balance.currency!)")
-                completion("\(balance.amount!) \(balance.currency!)")
+                completion(balance.amount)
             }
         }
     }
@@ -65,7 +65,7 @@ class ApiClient {
     func checkPriceQueryCache(router: CoindeskRouter) {
         if PriceQueryCache.getPriceCache(type: router.type) != nil {
             // has cache data, notify home so UI can be immediately updated
-            NotificationCenter.default.post(name:Notification.Name(rawValue: kNewHomeData),
+            NotificationCenter.default.post(name:Notification.Name(rawValue: Constants.kNewHomeData),
                                             object: nil,
                                             userInfo: ["beginningDate": router.beginningDate, "endDate": router.endDate])
             
@@ -83,7 +83,7 @@ class ApiClient {
         
         if hasNewData {
             debugPrint("[RAW] hasNewData")
-            NotificationCenter.default.post(name:Notification.Name(rawValue: kNewHomeData),
+            NotificationCenter.default.post(name:Notification.Name(rawValue: Constants.kNewHomeData),
                                             object: nil,
                                             userInfo: ["beginningDate": router.beginningDate, "endDate": router.endDate])
         }

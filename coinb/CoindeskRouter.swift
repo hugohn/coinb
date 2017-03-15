@@ -13,15 +13,6 @@ enum CoindeskRouter: URLRequestConvertible
 {
     static let ENDPOINT_URL = "https://api.coindesk.com/v1/bpi/historical/close.json"
     
-    static var dateFormatter: DateFormatter {
-        struct Static {
-            static let instance: DateFormatter = DateFormatter()
-        }
-        Static.instance.dateFormat = "yyyy-MM-dd"
-        
-        return Static.instance
-    }
-    
     case Week(String)
     case Month(String)
     case Year(String)
@@ -41,7 +32,7 @@ enum CoindeskRouter: URLRequestConvertible
             let oneYearAgoDate = calendar.date(byAdding: Calendar.Component.year, value: -1, to: now)
             return oneYearAgoDate
         case .All:
-            return CoindeskRouter.dateFormatter.date(from: "2010-07-18")
+            return Constants.dateFormatter.date(from: "2010-07-18")
         }
     }
     
@@ -82,13 +73,13 @@ enum CoindeskRouter: URLRequestConvertible
             switch self
             {
             case .Week (let currency):
-                return ["currency": currency, "start": CoindeskRouter.dateFormatter.string(from: self.beginningDate), "end": CoindeskRouter.dateFormatter.string(from: self.endDate)]
+                return ["currency": currency, "start": Constants.dateFormatter.string(from: self.beginningDate), "end": Constants.dateFormatter.string(from: self.endDate)]
             case .Month (let currency):
-                return ["currency": currency, "start": CoindeskRouter.dateFormatter.string(from: self.beginningDate), "end": CoindeskRouter.dateFormatter.string(from: self.endDate)]
+                return ["currency": currency, "start": Constants.dateFormatter.string(from: self.beginningDate), "end": Constants.dateFormatter.string(from: self.endDate)]
             case .Year (let currency):
-                return ["currency": currency, "start": CoindeskRouter.dateFormatter.string(from: self.beginningDate), "end": CoindeskRouter.dateFormatter.string(from: self.endDate)]
+                return ["currency": currency, "start": Constants.dateFormatter.string(from: self.beginningDate), "end": Constants.dateFormatter.string(from: self.endDate)]
             case .All (let currency):
-                return ["currency": currency, "start": CoindeskRouter.dateFormatter.string(from: self.beginningDate), "end": CoindeskRouter.dateFormatter.string(from: self.endDate)]
+                return ["currency": currency, "start": Constants.dateFormatter.string(from: self.beginningDate), "end": Constants.dateFormatter.string(from: self.endDate)]
             }
         }()
         

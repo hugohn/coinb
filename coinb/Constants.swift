@@ -7,5 +7,36 @@
 //
 
 import Foundation
+import UIKit
 
-let kNewHomeData = "kNewHomeData"
+struct Constants {
+    static let kNewHomeData = "kNewHomeData"
+    
+    static var currencyFormatter: NumberFormatter {
+        struct Static {
+            static let instance: NumberFormatter = NumberFormatter()
+        }
+        Static.instance.numberStyle = .currency
+        Static.instance.locale = NSLocale.current
+        
+        return Static.instance
+    }
+    
+    static var dateFormatter: DateFormatter {
+        struct Static {
+            static let instance: DateFormatter = DateFormatter()
+        }
+        Static.instance.dateFormat = "yyyy-MM-dd"
+        
+        return Static.instance
+    }
+    
+    static let primaryColor = UIColor(red: 1/255, green: 90/255, blue: 158/255, alpha: 1)
+    static let secondaryColor = UIColor(red: 31/255, green: 122/255, blue: 200/255, alpha: 1)
+    static let blackColor = UIColor(red: 23/255, green: 23/255, blue: 23/255, alpha: 1)
+    
+    static func getSymbolForCurrencyCode(code: String) -> String? {
+        let locale = NSLocale(localeIdentifier: code)
+        return locale.displayName(forKey: NSLocale.Key.currencySymbol, value: code)
+    }
+}

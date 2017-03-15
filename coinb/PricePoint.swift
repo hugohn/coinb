@@ -50,7 +50,7 @@ class PricePoint: Object {
         let pricePoint = PricePoint()
         pricePoint.key = key
         pricePoint.currency = currency
-        pricePoint.date = CoindeskRouter.dateFormatter.date(from: date)!
+        pricePoint.date = Constants.dateFormatter.date(from: date)!
         pricePoint.price = price
         pricePoint.save()
         
