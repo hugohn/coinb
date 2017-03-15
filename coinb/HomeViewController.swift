@@ -27,10 +27,31 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
-        spinner?.color = UIColor.clear
+        setupChartView()
+        NotificationCenter.default.addObserver(self, selector: #selector(onNewHomeData(notification:)), name: NSNotification.Name(rawValue: kNewHomeData), object: nil)
         
-        
+        showSpinner()
+        backgroundQueue.async {
+            // Background thread
+            ApiClient.sharedInstance.getSpotPrice(withCurrency: self.currency) { (price: String?) in
+                DispatchQueue.main.async {
+                    // UI Updates
+                    self.hideSpinner()
+                    if let price = price {
+                        self.priceLabel.text = price
+                    }
+                }
+            }
+            
+            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func setupChartView() {
         chartView.chartDescription?.enabled = false
         chartView.dragEnabled = true
         chartView.highlightPerDragEnabled = true
@@ -40,28 +61,23 @@ class HomeViewController: UIViewController {
         chartView.backgroundColor = UIColor.white
         chartView.legend.enabled = false
         chartView.tintColor = UIColor.blue
+    }
+    
+    func showSpinner() {
+        spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
+        spinner?.color = UIColor.clear
+    }
+    
+    func hideSpinner() {
+        self.spinner?.hide(animated: true)
+    }
+    
+    func onNewHomeData(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let beginningDate = userInfo["beginningDate"] as? Date,
+            let endDate = userInfo["endDate"] as? Date else { return }
         
-        backgroundQueue.async {
-            // Background thread
-            ApiClient.sharedInstance.getSpotPrice(withCurrency: self.currency) { (price: String?) in
-                self.spinner?.hide(animated: true)
-                guard let price = price else { return }
-                
-                DispatchQueue.main.async {
-                    // UI Updates
-                    self.priceLabel.text = price
-                }
-            }
-            
-            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency), completion: { (result: Bool, beginningDate: Date?, endDate: Date?) in
-                guard result else { return }
-                
-                DispatchQueue.main.async {
-                    // UI Updates
-                    self.updateChartWithData(beginningDate: beginningDate, endDate: endDate)
-                }
-            })
-        }
+        updateChartWithData(beginningDate: beginningDate, endDate: endDate)
     }
     
     func updateChartWithData(beginningDate: Date?, endDate: Date?) {
@@ -76,7 +92,10 @@ class HomeViewController: UIViewController {
         debugPrint("pricePoints.count = \(pricePoints.count)")
         let chartDataSet = LineChartDataSet(values: dataEntries, label: "Price")
         let chartData = LineChartData(dataSet: chartDataSet)
-        chartView.data = chartData
+        
+        DispatchQueue.main.async {
+            self.chartView.data = chartData
+        }
     }
 
     override func didReceiveMemoryWarning() {

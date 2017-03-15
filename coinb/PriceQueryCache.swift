@@ -43,7 +43,7 @@ class PriceQueryCache: Object {
         priceQueryCache.save(update: true)
     }
     
-    class func getPriceCache(type: String!, query: String!) -> PriceQueryCache? {
+    class func getPriceCache(type: String!) -> PriceQueryCache? {
         do {
             let realm = try Realm()
             return realm.object(ofType: PriceQueryCache.self, forPrimaryKey: type)
