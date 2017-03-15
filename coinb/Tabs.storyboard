@@ -9,10 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--News-->
         <scene sceneID="czI-0N-zEH">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bhp-Hc-qef" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="RqD-LD-8ha" customClass="NewsfeedViewController" customModule="coinb" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TPj-uC-kIE"/>
@@ -23,15 +22,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="Jlb-K3-9dV"/>
+                    <tabBarItem key="tabBarItem" title="News" image="icon_twitter" id="Jlb-K3-9dV"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bhp-Hc-qef" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-242" y="-415"/>
         </scene>
-        <!--Item 1-->
+        <!--Price-->
         <scene sceneID="2NY-e5-i4F">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y41-zD-S1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="CcQ-FV-DJi" customClass="HomeViewController" customModule="coinb" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z7C-SA-uEe"/>
@@ -58,11 +57,12 @@
                             <constraint firstItem="E3m-cH-RiE" firstAttribute="centerX" secondItem="Fzu-d3-Xie" secondAttribute="centerX" id="ny8-6Z-b2p"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Cy8-Co-bdm"/>
+                    <tabBarItem key="tabBarItem" title="Price" image="icon_price" id="Cy8-Co-bdm"/>
                     <connections>
                         <outlet property="priceLabel" destination="E3m-cH-RiE" id="SsY-OZ-RMq"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y41-zD-S1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-242" y="-1070"/>
         </scene>
@@ -85,4 +85,8 @@
             <point key="canvasLocation" x="-1194" y="-743"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_price" width="25" height="25"/>
+        <image name="icon_twitter" width="25" height="25"/>
+    </resources>
 </document>

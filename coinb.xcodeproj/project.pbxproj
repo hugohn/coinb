@@ -130,12 +130,28 @@
 		9A3501D31E78ED6100B7033A /* TabsContainer */ = {
 			isa = PBXGroup;
 			children = (
+				9A3501DB1E78FD2200B7033A /* Home */,
+				9A3501DC1E78FD2700B7033A /* Newsfeed */,
 				9A3501D61E78ED9D00B7033A /* Tabs.storyboard */,
 				9A3501D41E78ED8F00B7033A /* TabsController.swift */,
-				0B73D8241E768AB200EE46AE /* HomeViewController.swift */,
-				9A3501CC1E78E1B900B7033A /* NewsfeedViewController.swift */,
 			);
 			name = TabsContainer;
+			sourceTree = "<group>";
+		};
+		9A3501DB1E78FD2200B7033A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0B73D8241E768AB200EE46AE /* HomeViewController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		9A3501DC1E78FD2700B7033A /* Newsfeed */ = {
+			isa = PBXGroup;
+			children = (
+				9A3501CC1E78E1B900B7033A /* NewsfeedViewController.swift */,
+			);
+			name = Newsfeed;
 			sourceTree = "<group>";
 		};
 		C367D2DC5002A9FD2611F8B9 /* Pods */ = {
