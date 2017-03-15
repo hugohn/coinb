@@ -22,6 +22,7 @@ This simple app is inspired by the original [Coinbase app](https://itunes.apple.
 - Date & currency formatting
 - Gesture recognizer
 - Animation
+- Auto layout
 
 # Walkthrough
 
