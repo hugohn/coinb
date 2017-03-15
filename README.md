@@ -1,4 +1,4 @@
-# SmartStream - an iOS app
+# CoinB - an iOS app
 
 This simple app is inspired by the original [Coinbase app](https://itunes.apple.com/us/app/coinbase-bitcoin-ethereum-wallet/id886427730).
 
