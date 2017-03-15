@@ -22,8 +22,8 @@ class ApiClient {
         debugPrint("initialized Coinbase with token \(accessToken)")
     }
     
-    func getSpotPrice(withCurrency: String!, completion: ((String?) -> ())!) {
-        client.getSpotRate(withCurrency: withCurrency) { (balance: CoinbaseBalance?, error: Error?) in
+    func getSpotPrice(withCurrency currency: String!, completion: ((String?) -> ())!) {
+        client.getSpotRate(withCurrency: currency) { (balance: CoinbaseBalance?, error: Error?) in
             guard error == nil else {
                 debugPrint("error = \(error.debugDescription)")
                 completion(nil)
@@ -37,33 +37,30 @@ class ApiClient {
         }
     }
     
-    func getHistoricalPrice(withCurrency: String!, completion: ((Bool, String) -> ())!) {
-        let urlConvertible = CoindeskRouter.Week(withCurrency)
-        let urlString = urlConvertible.urlRequest?.url?.absoluteString ?? "NA"
-        
+    func getHistoricalPrice(withRouter router: CoindeskRouter, completion: ((Bool, Date?, Date?) -> ())!) {
         Alamofire
-            .request(urlConvertible)
+            .request(router)
             .validate()
             .responseJSON { (response: DataResponse<Any>) in
                 guard response.result.isSuccess else {
                     print("Error while fetching historical price data: \(response.result.error)")
-                    completion(false, urlString)
+                    completion(false, router.beginningDate, router.endDate)
                     return
                 }
                 
                 guard let value = response.result.value as? [String: Any],
                       let bpi = value["bpi"] as? [String: Double] else {
                         print("Invalid data received from Coindesk API")
-                        completion(false, urlString)
+                        completion(false, router.beginningDate, router.endDate)
                         return
                 }
                 
                 for (date, price) in bpi {
                     debugPrint("date = \(date); price = \(price)")
-                    PricePoint.addPricePoint(query: urlString, currency: withCurrency, date: date, price: price)
+                    PricePoint.addPricePoint(currency: router.currency, date: date, price: price)
                 }
                 
-                completion(true, urlString)
+                completion(true, router.beginningDate, router.endDate)
         }
     }
 }

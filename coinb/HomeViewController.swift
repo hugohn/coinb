@@ -53,22 +53,24 @@ class HomeViewController: UIViewController {
                 }
             }
             
-            ApiClient.sharedInstance.getHistoricalPrice(withCurrency: self.currency, completion: { (result: Bool, query: String) in
+            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency), completion: { (result: Bool, beginningDate: Date?, endDate: Date?) in
                 guard result else { return }
                 
                 DispatchQueue.main.async {
                     // UI Updates
-                    self.updateChartWithData(query: query)
+                    self.updateChartWithData(beginningDate: beginningDate, endDate: endDate)
                 }
             })
         }
     }
     
-    func updateChartWithData(query: String) {
+    func updateChartWithData(beginningDate: Date?, endDate: Date?) {
+        guard beginningDate != nil, endDate != nil else { return }
         var dataEntries: [ChartDataEntry] = []
-        let pricePoints = PricePoint.getPricePoints(query: query)
+        let pricePoints = PricePoint.getPricePoints(beginningDate: beginningDate, endDate: endDate)
         for i in 0..<pricePoints.count {
             let dataEntry = ChartDataEntry(x: Double(i), y: pricePoints[i].price)
+            debugPrint("[CHART] date = \(pricePoints[i].date); price = \(pricePoints[i].price)")
             dataEntries.append(dataEntry)
         }
         debugPrint("pricePoints.count = \(pricePoints.count)")
