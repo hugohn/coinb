@@ -33,6 +33,8 @@ struct Constants {
     
     static let primaryColor = UIColor(red: 1/255, green: 90/255, blue: 158/255, alpha: 1)
     static let secondaryColor = UIColor(red: 31/255, green: 122/255, blue: 200/255, alpha: 1)
+    
+    static let grayColor = UIColor(red: 76/255, green: 109/255, blue: 157/255, alpha: 1)
     static let blackColor = UIColor(red: 23/255, green: 23/255, blue: 23/255, alpha: 1)
     
     static func getSymbolForCurrencyCode(code: String) -> String? {

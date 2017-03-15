@@ -16,6 +16,16 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var priceSublabel: UITextView!
     @IBOutlet weak var chartView: LineChartView!
     
+    @IBOutlet weak var weekModeBtn: UIButton!
+    @IBOutlet weak var monthModeBtn: UIButton!
+    @IBOutlet weak var yearModeBtn: UIButton!
+    @IBOutlet weak var allModeBtn: UIButton!
+    var modeButtons = [UIButton]()
+    
+    @IBOutlet weak var divider1: UIView!
+    @IBOutlet weak var divider2: UIView!
+    @IBOutlet weak var divider3: UIView!
+    
     var currency = "USD"
     
     let backgroundQueue = DispatchQueue(label: "com.hugohn.coinb",
@@ -47,7 +57,7 @@ class HomeViewController: UIViewController {
                 }
             }
             
-            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Month(self.currency))
+            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
         }
     }
     
@@ -57,6 +67,22 @@ class HomeViewController: UIViewController {
     
     func setupViews() {
         view.backgroundColor = Constants.primaryColor
+        divider1.backgroundColor = Constants.grayColor
+        divider2.backgroundColor = Constants.grayColor
+        divider3.backgroundColor = Constants.grayColor
+        
+        modeButtons.append(weekModeBtn)
+        modeButtons.append(monthModeBtn)
+        modeButtons.append(yearModeBtn)
+        modeButtons.append(allModeBtn)
+        
+        for (index, button) in modeButtons.enumerated() {
+            button.setTitleColor(Constants.grayColor, for: UIControlState.normal)
+            button.setTitleColor(UIColor.white, for: UIControlState.selected)
+            button.tag = index
+            button.addTarget(self, action: #selector(onModeBtnTapped(sender:)), for: UIControlEvents.touchUpInside)
+        }
+        setButtonSelected(index: 0)
         
         priceLabel.backgroundColor = UIColor.clear
         priceLabel.textColor = UIColor.white
@@ -72,6 +98,38 @@ class HomeViewController: UIViewController {
         chartView.backgroundColor = UIColor.clear
         chartView.legend.enabled = false
         chartView.tintColor = UIColor.white
+    }
+    
+    func onModeBtnTapped(sender: UIButton) {
+        setButtonSelected(index: sender.tag)
+        switch sender.tag {
+        case 0:
+            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
+            break
+        case 1:
+            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Month(self.currency))
+            break
+        case 2:
+            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.Year(self.currency))
+            break
+        case 3:
+            ApiClient.sharedInstance.getHistoricalPrice(withRouter: CoindeskRouter.All(self.currency))
+            break
+        default:
+            break
+        }
+    }
+    
+    func setButtonSelected(index: Int) {
+        for (i, button) in modeButtons.enumerated() {
+            if index == i {
+                button.setTitleColor(UIColor.white, for: UIControlState.normal)
+                button.setTitleColor(Constants.grayColor, for: UIControlState.selected)
+            } else {
+                button.setTitleColor(Constants.grayColor, for: UIControlState.normal)
+                button.setTitleColor(UIColor.white, for: UIControlState.selected)
+            }
+        }
     }
     
     func showSpinner() {
