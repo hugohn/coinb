@@ -17,6 +17,10 @@
 		0BBAF3651E793E4D00D917F9 /* PriceQueryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF3641E793E4D00D917F9 /* PriceQueryCache.swift */; };
 		0BBAF3671E794D0600D917F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF3661E794D0600D917F9 /* Constants.swift */; };
 		0BBAF36C1E799F8300D917F9 /* MyFillFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF36B1E799F8300D917F9 /* MyFillFormatter.swift */; };
+		0BBAF36F1E79AC1200D917F9 /* MyXAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF36E1E79AC1200D917F9 /* MyXAxisValueFormatter.swift */; };
+		0BBAF3711E79AD6E00D917F9 /* MyYAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF3701E79AD6E00D917F9 /* MyYAxisValueFormatter.swift */; };
+		0BBAF3731E79B44A00D917F9 /* MyXAxisMonthFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF3721E79B44A00D917F9 /* MyXAxisMonthFormatter.swift */; };
+		0BBAF3751E79B45E00D917F9 /* MyXAxisYearFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAF3741E79B45E00D917F9 /* MyXAxisYearFormatter.swift */; };
 		9A3501BF1E78D30900B7033A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501BE1E78D30900B7033A /* MenuViewController.swift */; };
 		9A3501C51E78D4C500B7033A /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3501C41E78D4C500B7033A /* Menu.storyboard */; };
 		9A3501C81E78D95100B7033A /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3501C71E78D95100B7033A /* HamburgerViewController.swift */; };
@@ -41,6 +45,10 @@
 		0BBAF3641E793E4D00D917F9 /* PriceQueryCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceQueryCache.swift; sourceTree = "<group>"; };
 		0BBAF3661E794D0600D917F9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0BBAF36B1E799F8300D917F9 /* MyFillFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFillFormatter.swift; sourceTree = "<group>"; };
+		0BBAF36E1E79AC1200D917F9 /* MyXAxisValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyXAxisValueFormatter.swift; sourceTree = "<group>"; };
+		0BBAF3701E79AD6E00D917F9 /* MyYAxisValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyYAxisValueFormatter.swift; sourceTree = "<group>"; };
+		0BBAF3721E79B44A00D917F9 /* MyXAxisMonthFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyXAxisMonthFormatter.swift; sourceTree = "<group>"; };
+		0BBAF3741E79B45E00D917F9 /* MyXAxisYearFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyXAxisYearFormatter.swift; sourceTree = "<group>"; };
 		68CF20D81C22FB2844818060 /* Pods-coinb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coinb.release.xcconfig"; path = "Pods/Target Support Files/Pods-coinb/Pods-coinb.release.xcconfig"; sourceTree = "<group>"; };
 		9A3501BE1E78D30900B7033A /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9A3501C41E78D4C500B7033A /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
@@ -116,6 +124,10 @@
 			children = (
 				0BBAF3661E794D0600D917F9 /* Constants.swift */,
 				0BBAF36B1E799F8300D917F9 /* MyFillFormatter.swift */,
+				0BBAF36E1E79AC1200D917F9 /* MyXAxisValueFormatter.swift */,
+				0BBAF3721E79B44A00D917F9 /* MyXAxisMonthFormatter.swift */,
+				0BBAF3741E79B45E00D917F9 /* MyXAxisYearFormatter.swift */,
+				0BBAF3701E79AD6E00D917F9 /* MyYAxisValueFormatter.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -320,12 +332,16 @@
 				0BBAF3611E77D65D00D917F9 /* CoindeskRouter.swift in Sources */,
 				0BBAF3651E793E4D00D917F9 /* PriceQueryCache.swift in Sources */,
 				9A3501BF1E78D30900B7033A /* MenuViewController.swift in Sources */,
+				0BBAF3731E79B44A00D917F9 /* MyXAxisMonthFormatter.swift in Sources */,
+				0BBAF3711E79AD6E00D917F9 /* MyYAxisValueFormatter.swift in Sources */,
 				9A3501DF1E7902CB00B7033A /* PricePoint.swift in Sources */,
+				0BBAF36F1E79AC1200D917F9 /* MyXAxisValueFormatter.swift in Sources */,
 				0B73D8251E768AB200EE46AE /* HomeViewController.swift in Sources */,
 				0B73D8101E74A74D00EE46AE /* coinb.xcdatamodeld in Sources */,
 				0B73D8201E76515500EE46AE /* ApiClient.swift in Sources */,
 				0B73D8081E74A74D00EE46AE /* AppDelegate.swift in Sources */,
 				9A3501D51E78ED8F00B7033A /* TabsController.swift in Sources */,
+				0BBAF3751E79B45E00D917F9 /* MyXAxisYearFormatter.swift in Sources */,
 				9A3501C81E78D95100B7033A /* HamburgerViewController.swift in Sources */,
 				9A3501CD1E78E1B900B7033A /* NewsfeedViewController.swift in Sources */,
 				0BBAF36C1E799F8300D917F9 /* MyFillFormatter.swift in Sources */,

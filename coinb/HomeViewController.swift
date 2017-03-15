@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
         backgroundQueue.async {
             // Background thread
             ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
-            ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
+            ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Year(self.currency))
         }
     }
     
@@ -71,7 +71,7 @@ class HomeViewController: UIViewController {
             button.tag = index
             button.addTarget(self, action: #selector(onModeBtnTapped(sender:)), for: UIControlEvents.touchUpInside)
         }
-        setButtonSelected(index: 0)
+        setButtonSelected(index: 2)
         
         priceBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
         priceBtn.setTitleColor(Constants.grayColor, for: UIControlState.selected)
@@ -85,10 +85,33 @@ class HomeViewController: UIViewController {
         chartView.highlightPerDragEnabled = false
         chartView.pinchZoomEnabled = false
         chartView.drawGridBackgroundEnabled = false
+        chartView.drawBordersEnabled = false
         
         chartView.backgroundColor = UIColor.clear
         chartView.legend.enabled = false
         chartView.tintColor = UIColor.white
+        
+        chartView.rightAxis.enabled = false
+        
+        
+        let xAxis = chartView.xAxis
+        xAxis.drawAxisLineEnabled = false
+//        xAxis.setLabelCount(3, force: true)
+        xAxis.labelCount = 4
+        xAxis.labelFont = UIFont(name: "GillSans", size: 12.0)!
+        xAxis.labelTextColor = UIColor.white
+        xAxis.labelPosition = XAxis.LabelPosition.top
+        xAxis.drawGridLinesEnabled = false
+        
+        let leftAxis = chartView.leftAxis
+        leftAxis.drawAxisLineEnabled = false
+        leftAxis.spaceTop = 0.1
+        leftAxis.labelCount = 4
+        leftAxis.labelFont = UIFont(name: "GillSans", size: 12.0)!
+        leftAxis.labelTextColor = UIColor.white
+        leftAxis.drawGridLinesEnabled = true
+        leftAxis.labelPosition = YAxis.LabelPosition.outsideChart
+        leftAxis.valueFormatter = MyYAxisValueFormatter()
     }
     
     func onPriceBtnTapped() {
@@ -126,6 +149,14 @@ class HomeViewController: UIViewController {
                 button.setTitleColor(Constants.grayColor, for: UIControlState.normal)
                 button.setTitleColor(UIColor.white, for: UIControlState.selected)
             }
+        }
+        
+        if index == 3 {
+            chartView.xAxis.valueFormatter = MyXAxisYearFormatter()
+        } else if index == 2 {
+            chartView.xAxis.valueFormatter = MyXAxisMonthFormatter()
+        } else {
+            chartView.xAxis.valueFormatter = MyXAxisValueFormatter()
         }
     }
     
@@ -182,7 +213,7 @@ class HomeViewController: UIViewController {
         var dataEntries: [ChartDataEntry] = []
         let pricePoints = PricePoint.getPricePoints(beginningDate: beginningDate, endDate: endDate)
         for i in 0..<pricePoints.count {
-            let dataEntry = ChartDataEntry(x: Double(i), y: pricePoints[i].price)
+            let dataEntry = ChartDataEntry(x: pricePoints[i].date.timeIntervalSince1970, y: pricePoints[i].price)
             //debugPrint("[CHART] date = \(pricePoints[i].date); price = \(pricePoints[i].price)")
             dataEntries.append(dataEntry)
         }
@@ -193,6 +224,7 @@ class HomeViewController: UIViewController {
         chartDataSet.drawCirclesEnabled = false
         chartDataSet.drawCircleHoleEnabled = false
         chartDataSet.drawValuesEnabled = false
+        chartDataSet.drawVerticalHighlightIndicatorEnabled = false
         chartDataSet.mode = .linear
 //        chartDataSet.colors = ChartColorTemplates.vordiplom()
 //        chartDataSet.drawCubicEnabled = true

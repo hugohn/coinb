@@ -24,11 +24,49 @@ struct Constants {
         return Static.instance
     }
     
+    static var roundedCurrencyFormatter: NumberFormatter {
+        struct Static {
+            static let instance: NumberFormatter = NumberFormatter()
+        }
+        Static.instance.numberStyle = .currency
+        Static.instance.locale = NSLocale.current
+        Static.instance.maximumFractionDigits = 0
+        
+        return Static.instance
+    }
+    
     static var dateFormatter: DateFormatter {
         struct Static {
             static let instance: DateFormatter = DateFormatter()
         }
         Static.instance.dateFormat = "yyyy-MM-dd"
+        
+        return Static.instance
+    }
+    
+    static var shortDateFormatter: DateFormatter {
+        struct Static {
+            static let instance: DateFormatter = DateFormatter()
+        }
+        Static.instance.dateFormat = "MM/dd"
+        
+        return Static.instance
+    }
+    
+    static var monthFormatter: DateFormatter {
+        struct Static {
+            static let instance: DateFormatter = DateFormatter()
+        }
+        Static.instance.dateFormat = "MMM"
+        
+        return Static.instance
+    }
+    
+    static var yearFormatter: DateFormatter {
+        struct Static {
+            static let instance: DateFormatter = DateFormatter()
+        }
+        Static.instance.dateFormat = "MM/YY"
         
         return Static.instance
     }
