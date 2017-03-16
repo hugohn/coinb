@@ -23,9 +23,10 @@ class ApiClient {
     }
     
     func loadSpotPrice(withCurrency currency: String!) {
+        debugPrint("[API] hitting Coinbase API")
         client.getSpotRate(withCurrency: currency) { (balance: CoinbaseBalance?, error: Error?) in
             guard error == nil else {
-                debugPrint("error = \(error.debugDescription)")
+                debugPrint("[API] error = \(error.debugDescription)")
                 return
             }
             
@@ -47,19 +48,19 @@ class ApiClient {
         }
         
         // fire API request
-        debugPrint("hitting API")
+        debugPrint("[API] hitting API")
         Alamofire
             .request(router)
             .validate()
             .responseJSON { (response: DataResponse<Any>) in
                 guard response.result.isSuccess else {
-                    print("Error while fetching historical price data: \(response.result.error)")
+                    print("[API] Error while fetching historical price data: \(response.result.error)")
                     return
                 }
                 
                 guard let dictionary = response.result.value as? [String: Any],
                       let bpi = dictionary["bpi"] as? [String: Double] else {
-                        print("Invalid data received from Coindesk API")
+                        print("[API] Invalid data received from Coindesk API")
                         return
                 }
                 

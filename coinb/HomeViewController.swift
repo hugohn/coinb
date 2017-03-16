@@ -185,8 +185,8 @@ class HomeViewController: UIViewController {
     func hideSpinner() {
         guard spinner != nil else { return }
         debugPrint("[SPINNER] hideSpinner")
-        self.spinner?.hide(animated: true)
-        self.spinner = nil
+        spinner?.hide(animated: true)
+        spinner = nil
     }
     
     func onNewSpotData(notification: Notification) {
