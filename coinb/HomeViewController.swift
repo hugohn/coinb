@@ -167,6 +167,8 @@ class HomeViewController: UIViewController {
     }
     
     func showSpinner() {
+        guard spinner == nil else { return }
+        debugPrint("showSpinner")
         spinner = MBProgressHUD.showAdded(to: self.chartView, animated: true)
         spinner?.bezelView.style = MBProgressHUDBackgroundStyle.solidColor
         spinner?.bezelView.color = UIColor.clear
@@ -174,8 +176,10 @@ class HomeViewController: UIViewController {
     }
     
     func hideSpinner() {
+        debugPrint("hideSpinner")
         self.spinner?.hide(animated: true)
         MBProgressHUD.hide(for: self.chartView, animated: true)
+        self.spinner = nil
     }
     
     func onNewSpotData(notification: Notification) {
