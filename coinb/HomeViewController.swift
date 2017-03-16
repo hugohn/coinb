@@ -211,16 +211,8 @@ class HomeViewController: UIViewController {
     }
     
     func onLoadingHome(notification: Notification) {
-        guard let userInfo = notification.userInfo,
-            let doneLoading = userInfo["doneLoading"] as? Bool else { return }
-        
-        debugPrint("doneLoading = \(doneLoading)")
         DispatchQueue.main.async {
-            if doneLoading {
-                self.hideSpinner()
-            } else {
-                self.showSpinner()
-            }
+            self.showSpinner()
         }
     }
     
@@ -247,11 +239,10 @@ class HomeViewController: UIViewController {
         chartDataSet.drawValuesEnabled = false
         chartDataSet.drawVerticalHighlightIndicatorEnabled = false
         chartDataSet.mode = .linear
-//        chartDataSet.colors = ChartColorTemplates.vordiplom()
-//        chartDataSet.drawCubicEnabled = true
         let chartData = LineChartData(dataSet: chartDataSet)
         
         DispatchQueue.main.async {
+            self.hideSpinner()
             self.chartView.data = chartData
         }
     }

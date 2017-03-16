@@ -43,7 +43,7 @@ class ApiClient {
         if !hasCache {
             NotificationCenter.default.post(name:Notification.Name(rawValue: Constants.kLoadingHomeData),
                                             object: nil,
-                                            userInfo: ["doneLoading": false])
+                                            userInfo: nil)
         }
         
         // fire API request
@@ -52,12 +52,6 @@ class ApiClient {
             .request(router)
             .validate()
             .responseJSON { (response: DataResponse<Any>) in
-                if !hasCache {
-                    NotificationCenter.default.post(name:Notification.Name(rawValue: Constants.kLoadingHomeData),
-                                                    object: nil,
-                                                    userInfo: ["doneLoading": true])
-                }
-                
                 guard response.result.isSuccess else {
                     print("Error while fetching historical price data: \(response.result.error)")
                     return
