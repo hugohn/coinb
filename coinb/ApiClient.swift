@@ -13,6 +13,7 @@ import Alamofire
 class ApiClient {
     static let sharedInstance = ApiClient()
     private var client: Coinbase = Coinbase()
+    let utilityQueue = DispatchQueue.global(qos: .utility)
     
     private init() {
     }
@@ -52,7 +53,7 @@ class ApiClient {
         Alamofire
             .request(router)
             .validate()
-            .responseJSON { (response: DataResponse<Any>) in
+            .responseJSON(queue: utilityQueue) { (response: DataResponse<Any>) in
                 guard response.result.isSuccess else {
                     print("[API] Error while fetching historical price data: \(response.result.error)")
                     return
@@ -64,8 +65,8 @@ class ApiClient {
                         return
                 }
                 
-                self.processPriceData(router: router, bpi: bpi)
                 self.updatePriceQueryCache(router: router, bpi: bpi)
+                self.processPriceData(router: router, bpi: bpi)
         }
     }
     

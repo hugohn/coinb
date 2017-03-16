@@ -27,7 +27,7 @@ class PricePoint: Object {
         do {
             let realm = try Realm()
             try realm.write {
-                realm.add(self)
+                realm.add(self, update: true)
             }
         } catch let error as NSError {
             fatalError(error.localizedDescription)
@@ -39,7 +39,7 @@ class PricePoint: Object {
         do {
             let realm = try Realm()
             if realm.object(ofType: PricePoint.self, forPrimaryKey: key) != nil {
-//                debugPrint("Price point already exists")
+                //debugPrint("Price point already exists for key = \(key)")
                 return nil
             }
         } catch let error as NSError {
