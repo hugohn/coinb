@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
     var currency = "USD"
     var prevPrice: Double?
     var spinner: MBProgressHUD?
+    var currRouterType: String?
     
     let spotRefreshInterval = 3.0
     let priceAnimatationDuration = 1.0
@@ -127,21 +128,27 @@ class HomeViewController: UIViewController {
         backgroundQueue.async {
             ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
             
+            var router: CoindeskRouter?
             switch sender.tag {
             case 0:
-                ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Week(self.currency))
+                router = CoindeskRouter.Week(self.currency)
                 break
             case 1:
-                ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Month(self.currency))
+                router = CoindeskRouter.Month(self.currency)
                 break
             case 2:
-                ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.Year(self.currency))
+                router = CoindeskRouter.Year(self.currency)
                 break
             case 3:
-                ApiClient.sharedInstance.loadHistoricalPrice(withRouter: CoindeskRouter.All(self.currency))
+                router = CoindeskRouter.All(self.currency)
                 break
             default:
                 break
+            }
+            
+            if let router = router {
+                self.currRouterType = router.type
+                ApiClient.sharedInstance.loadHistoricalPrice(withRouter: router)
             }
         }
     }
@@ -168,7 +175,7 @@ class HomeViewController: UIViewController {
     
     func showSpinner() {
         guard spinner == nil else { return }
-        debugPrint("showSpinner")
+        debugPrint("[SPINNER] showSpinner")
         spinner = MBProgressHUD.showAdded(to: self.chartView, animated: true)
         spinner?.bezelView.style = MBProgressHUDBackgroundStyle.solidColor
         spinner?.bezelView.color = UIColor.clear
@@ -176,9 +183,9 @@ class HomeViewController: UIViewController {
     }
     
     func hideSpinner() {
-        debugPrint("hideSpinner")
+        guard spinner != nil else { return }
+        debugPrint("[SPINNER] hideSpinner")
         self.spinner?.hide(animated: true)
-        MBProgressHUD.hide(for: self.chartView, animated: true)
         self.spinner = nil
     }
     
@@ -222,7 +229,9 @@ class HomeViewController: UIViewController {
     
     func onNewHomeData(notification: Notification) {
         guard let userInfo = notification.userInfo,
+            let routerType = userInfo["type"] as? String,
             let pricePoints = userInfo["pricePoints"] as? Results<PricePoint> else { return }
+        guard routerType == currRouterType else { return }
         
         updateChartWithData(pricePoints: pricePoints)
     }
