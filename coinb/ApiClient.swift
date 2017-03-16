@@ -80,7 +80,7 @@ class ApiClient {
         // has cache data, notify home so UI can be immediately updated
         NotificationCenter.default.post(name:Notification.Name(rawValue: Constants.kNewHomeData),
                                         object: nil,
-                                        userInfo: ["beginningDate": router.beginningDate, "endDate": router.endDate])
+                                        userInfo: ["pricePoints": PricePoint.getPricePoints(beginningDate: router.beginningDate, endDate: router.endDate)])
         
         return true
     }
@@ -98,7 +98,7 @@ class ApiClient {
         if existingCacheForRouter == nil || hasNewPricePoint {
             NotificationCenter.default.post(name:Notification.Name(rawValue: Constants.kNewHomeData),
                                             object: nil,
-                                            userInfo: ["beginningDate": router.beginningDate, "endDate": router.endDate])
+                                            userInfo: ["pricePoints": PricePoint.getPricePoints(beginningDate: router.beginningDate, endDate: router.endDate)])
         }
     }
     

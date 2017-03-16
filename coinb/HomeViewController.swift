@@ -9,6 +9,7 @@
 import UIKit
 import MBProgressHUD
 import Charts
+import RealmSwift
 
 class HomeViewController: UIViewController {
 
@@ -225,15 +226,13 @@ class HomeViewController: UIViewController {
     
     func onNewHomeData(notification: Notification) {
         guard let userInfo = notification.userInfo,
-            let beginningDate = userInfo["beginningDate"] as? Date,
-            let endDate = userInfo["endDate"] as? Date else { return }
+            let pricePoints = userInfo["pricePoints"] as? Results<PricePoint> else { return }
         
-        updateChartWithData(beginningDate: beginningDate, endDate: endDate)
+        updateChartWithData(pricePoints: pricePoints)
     }
     
-    func updateChartWithData(beginningDate: Date!, endDate: Date!) {
+    func updateChartWithData(pricePoints: Results<PricePoint>!) {
         var dataEntries: [ChartDataEntry] = []
-        let pricePoints = PricePoint.getPricePoints(beginningDate: beginningDate, endDate: endDate)
         for i in 0..<pricePoints.count {
             let dataEntry = ChartDataEntry(x: pricePoints[i].date.timeIntervalSince1970, y: pricePoints[i].price)
             //debugPrint("[CHART] date = \(pricePoints[i].date); price = \(pricePoints[i].price)")
