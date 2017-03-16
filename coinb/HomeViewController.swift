@@ -46,9 +46,11 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onNewHomeData(notification:)), name: NSNotification.Name(rawValue: Constants.kNewHomeData), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onLoadingHome(notification:)), name: NSNotification.Name(rawValue: Constants.kLoadingHomeData), object: nil)
         
-        Timer.scheduledTimer(withTimeInterval: spotRefreshInterval, repeats: true) { (Timer) in
-            self.backgroundQueue.async {
-                ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
+        Timer.scheduledTimer(withTimeInterval: spotRefreshInterval, repeats: true) {[weak self] (Timer) in
+            if let strongSelf = self {
+                strongSelf.backgroundQueue.async {
+                    ApiClient.sharedInstance.loadSpotPrice(withCurrency: strongSelf.currency)
+                }
             }
         }
         onModeBtnTapped(sender: yearModeBtn)
