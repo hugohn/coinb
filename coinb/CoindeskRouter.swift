@@ -18,29 +18,30 @@ enum CoindeskRouter: URLRequestConvertible
     case Year(String)
     case All(String)
     
-    var beginningDate: Date! {
+    var beginningDate: Date {
         let calendar = Calendar.current
         let now = Date()
         switch self {
         case .Week:
             let oneWeekAgoDate = calendar.date(byAdding: Calendar.Component.weekOfYear, value: -1, to: now)
-            return oneWeekAgoDate
+            return (oneWeekAgoDate != nil) ? oneWeekAgoDate!: now
         case .Month:
             let oneMonthAgoDate = calendar.date(byAdding: Calendar.Component.month, value: -1, to: now)
-            return oneMonthAgoDate
+            return (oneMonthAgoDate != nil) ? oneMonthAgoDate!: now
         case .Year:
             let oneYearAgoDate = calendar.date(byAdding: Calendar.Component.year, value: -1, to: now)
-            return oneYearAgoDate
+            return (oneYearAgoDate != nil) ? oneYearAgoDate!: now
         case .All:
-            return Constants.dateFormatter.date(from: "2010-07-18")
+            let beginningAllDate = Constants.dateFormatter.date(from: "2010-07-18")
+            return (beginningAllDate != nil) ? beginningAllDate!: now
         }
     }
     
-    var endDate: Date! {
+    var endDate: Date {
         return Date()
     }
     
-    var type: String! {
+    var type: String {
         switch self
         {
         case .Week:
@@ -54,7 +55,7 @@ enum CoindeskRouter: URLRequestConvertible
         }
     }
     
-    var currency: String! {
+    var currency: String {
         switch self
         {
         case .Week (let currency):

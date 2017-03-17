@@ -35,10 +35,6 @@ class HomeViewController: UIViewController {
     let spotRefreshInterval = 3.0
     let priceAnimatationDuration = 1.0
     
-    let backgroundQueue = DispatchQueue(label: "com.hugohn.coinb",
-                                        qos: .background,
-                                        target: nil)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,9 +46,7 @@ class HomeViewController: UIViewController {
         
         Timer.scheduledTimer(withTimeInterval: spotRefreshInterval, repeats: true) {[weak self] (Timer) in
             if let strongSelf = self {
-                strongSelf.backgroundQueue.async {
-                    ApiClient.sharedInstance.loadSpotPrice(withCurrency: strongSelf.currency)
-                }
+                ApiClient.sharedInstance.loadSpotPrice(withCurrency: strongSelf.currency)
             }
         }
         onModeBtnTapped(sender: yearModeBtn)
@@ -125,31 +119,29 @@ class HomeViewController: UIViewController {
         setButtonSelected(index: sender.tag)
         chartView.clear()
         
-        backgroundQueue.async {
-            ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
-            
-            var router: CoindeskRouter?
-            switch sender.tag {
-            case 0:
-                router = CoindeskRouter.Week(self.currency)
-                break
-            case 1:
-                router = CoindeskRouter.Month(self.currency)
-                break
-            case 2:
-                router = CoindeskRouter.Year(self.currency)
-                break
-            case 3:
-                router = CoindeskRouter.All(self.currency)
-                break
-            default:
-                break
-            }
-            
-            if let router = router {
-                self.currRouterType = router.type
-                ApiClient.sharedInstance.loadHistoricalPrice(withRouter: router)
-            }
+        ApiClient.sharedInstance.loadSpotPrice(withCurrency: self.currency)
+        
+        var router: CoindeskRouter?
+        switch sender.tag {
+        case 0:
+            router = CoindeskRouter.Week(self.currency)
+            break
+        case 1:
+            router = CoindeskRouter.Month(self.currency)
+            break
+        case 2:
+            router = CoindeskRouter.Year(self.currency)
+            break
+        case 3:
+            router = CoindeskRouter.All(self.currency)
+            break
+        default:
+            break
+        }
+        
+        if let router = router {
+            self.currRouterType = router.type
+            ApiClient.sharedInstance.loadHistoricalPrice(withRouter: router)
         }
     }
     
@@ -236,7 +228,7 @@ class HomeViewController: UIViewController {
         updateChartWithData(pricePoints: pricePoints)
     }
     
-    func updateChartWithData(pricePoints: Results<PricePoint>!) {
+    func updateChartWithData(pricePoints: Results<PricePoint>) {
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<pricePoints.count {
             let dataEntry = ChartDataEntry(x: pricePoints[i].date.timeIntervalSince1970, y: pricePoints[i].price)

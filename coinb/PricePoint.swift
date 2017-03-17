@@ -57,7 +57,7 @@ class PricePoint: Object {
         return pricePoint
     }
     
-    class func getPricePoints(beginningDate: Date!, endDate: Date!) -> Results<PricePoint> {
+    class func getPricePoints(beginningDate: Date, endDate: Date) -> Results<PricePoint> {
         do {
             let realm = try Realm()
             return realm.objects(PricePoint.self).filter("date BETWEEN {%@, %@}", beginningDate, endDate).sorted(byProperty: "date", ascending: true)

@@ -13,7 +13,7 @@ import Alamofire
 class ApiClient {
     static let sharedInstance = ApiClient()
     private var client: Coinbase = Coinbase()
-    let utilityQueue = DispatchQueue.global(qos: .utility)
+    private var pendingRequests = [String: Bool]()
     
     private init() {
     }
@@ -48,25 +48,32 @@ class ApiClient {
                                             userInfo: nil)
         }
         
+        guard pendingRequests[router.type] == nil else { return }
+        pendingRequests[router.type] = true
+        
         // fire API request
-        debugPrint("[API] hitting API")
+        let queue = hasCache ? Queues.backgroundQueue: Queues.userInitiatedQueue
+        debugPrint("[API] hitting API, router type = \(router.type); backgroundQueue = \(hasCache)")
         Alamofire
             .request(router)
             .validate()
-            .responseJSON(queue: utilityQueue) { (response: DataResponse<Any>) in
+            .responseJSON(queue: queue) { (response: DataResponse<Any>) in
                 guard response.result.isSuccess else {
                     print("[API] Error while fetching historical price data: \(response.result.error)")
+                    self.pendingRequests.removeValue(forKey: router.type)
                     return
                 }
                 
                 guard let dictionary = response.result.value as? [String: Any],
                       let bpi = dictionary["bpi"] as? [String: Double] else {
                         print("[API] Invalid data received from Coindesk API")
+                        self.pendingRequests.removeValue(forKey: router.type)
                         return
                 }
                 
-                self.updatePriceQueryCache(router: router, bpi: bpi)
                 self.processPriceData(router: router, bpi: bpi)
+                self.updatePriceQueryCache(router: router, bpi: bpi)
+                self.pendingRequests.removeValue(forKey: router.type)
         }
     }
     
